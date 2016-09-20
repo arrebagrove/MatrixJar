@@ -27,7 +27,8 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }" 
+                <TextBox TextChanged="TextBox_TextChanged"
+                         Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }" 
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -35,7 +36,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -43,7 +45,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -51,7 +54,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -59,7 +63,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="2" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -67,7 +72,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="2" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -75,7 +81,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="2" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="2" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -83,7 +90,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="2" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="2" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -91,7 +99,8 @@
                         </TransitionCollection>
                     </TextBox.Transitions>
                 </TextBox>
-                <TextBox Grid.Row="2" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
+                <TextBox TextChanged="TextBox_TextChanged"
+                    Grid.Row="2" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="2" Margin="3" MinWidth="0" InputScope="Digits">
                     <TextBox.Transitions>
                         <TransitionCollection>
@@ -123,7 +132,7 @@
                             Grid.Column="0" Margin="3" Grid.Row="0"
                             FontFamily="Segoe MDL2 Assets" Name="AddRow"
                             Click="AddRow_Click" FontSize="13"/>
-                <TextBlock Text="2" HorizontalAlignment="Center" Margin="3 0" Name="xC"
+                <TextBlock Text="3" HorizontalAlignment="Center" Margin="3 0" Name="xC"
                             VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
                 <Button Content="&#xE738;" HorizontalAlignment="Stretch"
                             Grid.Column="2" Margin="3" Grid.Row="0"
@@ -136,7 +145,7 @@
                             Grid.Column="4" Margin="3" Grid.Row="0" 
                             FontFamily="Segoe MDL2 Assets" Name="AddColumn"
                             Click="AddColumn_Click" FontSize="13"/>
-                <TextBlock Text="2" HorizontalAlignment="Center" Margin="3 0" Name="yC"
+                <TextBlock Text="3" HorizontalAlignment="Center" Margin="3 0" Name="yC"
                             VerticalAlignment="Center" Grid.Row="0" Grid.Column="5"/>
                 <Button Content="&#xE738;" HorizontalAlignment="Stretch"
                             Grid.Column="6" Margin="3" Grid.Row="0" 
@@ -153,7 +162,7 @@
             <StackPanel>
                 <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE765;" FontSize="80"
                            HorizontalAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
-                <TextBlock Text="Заполните матрицу и &#x0a; проведите по экрану!" FontSize="21"
+                <TextBlock Text="Заполните матрицу и&#x0a;проведите по экрану!" FontWeight="SemiLight" FontSize="21"
                            TextWrapping="Wrap" TextAlignment="Center" Margin="12,6" />
             </StackPanel>
         </Grid>

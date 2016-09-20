@@ -24,5 +24,18 @@ namespace MatrixCalc
             this.InitializeComponent();
             App.ChosenIndex = 1;
         }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                await (new MessageDialog(MONE.Matrix[0, 0].ToString())).ShowAsync();
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
