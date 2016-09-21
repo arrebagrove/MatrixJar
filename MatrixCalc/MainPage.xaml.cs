@@ -23,7 +23,11 @@ namespace MatrixCalc
         {
             this.InitializeComponent();
             MainFrame.Navigate(typeof(Page_Plus));
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(300, 100));
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(300, 300));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 StatusBar statusBar = StatusBar.GetForCurrentView();
@@ -40,8 +44,8 @@ namespace MatrixCalc
                     a.Handled = true;
                 }
             };
-        }  
-       
+        }
+
         private void MyButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;

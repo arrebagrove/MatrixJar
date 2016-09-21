@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MatrixCalc.Page_Plus"
+    x:Class="MatrixCalc.Page_Minus"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MatrixCalc"
@@ -23,13 +23,13 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <TextBlock Text="СЛОЖЕНИЕ" FontWeight="Bold" Foreground="White"
+            <TextBlock Text="ВЫЧИТАНИЕ" FontWeight="Bold" Foreground="White"
                        FontSize="15" Margin="60,14,0,0" />
         </Grid>
         <Grid Canvas.ZIndex="0" 
               Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
               Grid.Row="1" Height="48" VerticalAlignment="Top"/>
-        <Pivot Canvas.ZIndex="1" Grid.Row="1">
+        <Pivot Canvas.ZIndex="1" Grid.Row="1" SelectionChanged="Pivot_SelectionChanged">
             <Pivot.Resources>
                 <Style TargetType="PivotHeaderItem">
                     <Setter Property="FontSize" Value="{ThemeResource PivotHeaderItemFontSize}" />
@@ -84,7 +84,7 @@
                                                 <Storyboard>
                                                     <DoubleAnimation Storyboard.TargetName="ContentPresenterTranslateTransform"
                                                          Storyboard.TargetProperty="X"
-                                                         Duration="0" To="{ThemeResource PivotHeaderItemLockedTranslation}" />              
+                                                         Duration="0" To="{ThemeResource PivotHeaderItemLockedTranslation}" />
                                                     <DoubleAnimation Storyboard.TargetName="ContentPresenter"
                                                          Storyboard.TargetProperty="(UIElement.Opacity)"
                                                          Duration="0" To="0" />
@@ -161,7 +161,7 @@
                                             FontFamily="{TemplateBinding FontFamily}"
                                             FontWeight="{TemplateBinding FontWeight}"
                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">     
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                         <ContentPresenter.RenderTransform>
                                             <TranslateTransform x:Name="ContentPresenterTranslateTransform" />
                                         </ContentPresenter.RenderTransform>
@@ -195,7 +195,9 @@
                 </ScrollViewer>
             </PivotItem>
             <PivotItem Header="Результат" Margin="0">
-                <Button Width="100" Height="100" Click="Button_Click" />
+                <ScrollViewer>
+                    <local:ResultBox x:Name="Result" />
+                </ScrollViewer>
             </PivotItem>
         </Pivot>
     </Grid>

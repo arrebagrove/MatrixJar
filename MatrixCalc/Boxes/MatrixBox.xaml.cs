@@ -125,13 +125,13 @@ namespace MatrixCalc
             yC.Text = x_num.ToString();
         }
 
-        public double[,] Matrix
+        public Matrix InnerMatrix
         {
             get
             {
                 int columnCount = MatrixOne.ColumnDefinitions.Count;
                 int rowCount = MatrixOne.RowDefinitions.Count;
-                double[,] matrix = new double[rowCount, columnCount];
+                Matrix matrix = new Matrix(rowCount, columnCount);
                 try
                 {
                     for (int x = 0; x < rowCount; x++)
@@ -145,14 +145,14 @@ namespace MatrixCalc
                 catch
                 {
                     ShowError(string.Format(@"Ошибка ввода данных в матрицу {0}! Ячейки, в которые был осуществлен некорректный ввод, подсвечиваются серым цветом.", Title));
-                    return null;
+                    throw new MatrixInputInvalidException(string.Format("Неверный ввод в матрицу {0}!", Title));
                 }
             }
             set
             {
                 // Get matrix dimensions
-                int columnCount = value.GetLength(0);
-                int rowCount = value.GetLength(1);
+                int columnCount = value.GetWidth();
+                int rowCount = value.GetHeight();
 
                 // Clear initially generated xaml
                 MatrixOne.Children.Clear();
