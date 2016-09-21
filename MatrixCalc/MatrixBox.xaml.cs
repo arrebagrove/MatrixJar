@@ -80,7 +80,7 @@ namespace MatrixCalc
                         if (((int)child.GetValue(Grid.ColumnProperty) == index)
                             && ((int)child.GetValue(Grid.RowProperty) == x))
                             MatrixOne.Children.Remove(child);
-                await Task.Delay(600);
+                await Task.Delay(700);
                 MatrixOne.ColumnDefinitions.RemoveAt(index);
                 UpdateCounter();
             }
@@ -132,7 +132,6 @@ namespace MatrixCalc
                 int columnCount = MatrixOne.ColumnDefinitions.Count;
                 int rowCount = MatrixOne.RowDefinitions.Count;
                 double[,] matrix = new double[rowCount, columnCount];
-
                 try
                 {
                     for (int x = 0; x < rowCount; x++)
@@ -145,15 +144,69 @@ namespace MatrixCalc
                 }
                 catch
                 {
-                    ShowError("АШЫБКА!!!");
+                    ShowError(string.Format(@"Ошибка ввода данных в матрицу {0}! Ячейки, в которые был осуществлен некорректный ввод, подсвечиваются серым цветом.", Title));
                     return null;
                 }
+            }
+            set
+            {
+                // Get matrix dimensions
+                int columnCount = value.GetLength(0);
+                int rowCount = value.GetLength(1);
+
+                // Clear initially generated xaml
+                MatrixOne.Children.Clear();
+                MatrixOne.RowDefinitions.Clear();
+                MatrixOne.ColumnDefinitions.Clear();
+
+                // Set column and row count of a new matrix
+                for (int x = 0; x < rowCount; x++) MatrixOne.ColumnDefinitions.Add(new ColumnDefinition());
+                for (int x = 0; x < columnCount; x++) MatrixOne.RowDefinitions.Add(new RowDefinition());
+
+                // Fill the matrix with numbers
+                for (int x = 0; x < columnCount; x++)
+                {
+                    for (int y = 0; y < rowCount; y++)
+                    {
+                        TextBox textBox = createTextBox(x, y);
+                        textBox.Text = value[x, y].ToString();
+
+                        // Data in the matrix is 100% correct, so let's mark it as correct
+                        textBox.BorderBrush = Resources["SystemControlHighlightAccentBrush"] as Brush;
+                        MatrixOne.Children.Add(textBox);
+                    }
+                }               
+        
+                UpdateCounter();
             }
         }
 
         private async void ShowError(string error)
         {
             await (new MessageDialog(error)).ShowAsync();
+        }
+
+        public static readonly DependencyProperty TitleProperty = 
+            DependencyProperty.Register("Title", typeof(string), typeof(string), 
+                new PropertyMetadata(null));
+
+        public string Title
+        {
+            get
+            {
+                return (string)GetValue(TitleProperty);
+            }
+            set
+            {
+                SetValue(TitleProperty, value);
+                FillMatrix.Text = string.Format("Заполните матрицу {0} и\nпроведите по экрану!", value);
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (UIElement child in MatrixOne.Children)
+                ((TextBox)child).Text = string.Empty;
         }
     }
 }

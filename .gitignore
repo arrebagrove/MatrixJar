@@ -56,3 +56,4 @@ MatrixCalc/Package.appxmanifest
 *.user
 MatrixCalc/MatrixCalc.csproj
 *.config
+.vs/MatrixCalc/v14/.suo

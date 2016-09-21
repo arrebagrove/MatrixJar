@@ -47,8 +47,8 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="PivotHeaderItem">
                                 <Grid
-          x:Name="Grid"
-          Background="{TemplateBinding Background}">
+                                    x:Name="Grid"
+                                    Background="{TemplateBinding Background}">
                                     <Grid.Resources>
                                         <Style x:Key="BaseContentPresenterStyle" TargetType="ContentPresenter">
                                             <Setter Property="FontFamily" Value="XamlAutoFontFamily"/>
@@ -83,11 +83,11 @@
                                             <VisualState x:Name="UnselectedLocked">
                                                 <Storyboard>
                                                     <DoubleAnimation Storyboard.TargetName="ContentPresenterTranslateTransform"
-                                 Storyboard.TargetProperty="X"
-                                 Duration="0" To="{ThemeResource PivotHeaderItemLockedTranslation}" />
+                                                         Storyboard.TargetProperty="X"
+                                                         Duration="0" To="{ThemeResource PivotHeaderItemLockedTranslation}" />              
                                                     <DoubleAnimation Storyboard.TargetName="ContentPresenter"
-                                 Storyboard.TargetProperty="(UIElement.Opacity)"
-                                 Duration="0" To="0" />
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         Duration="0" To="0" />
                                                 </Storyboard>
                                             </VisualState>
                                             <VisualState x:Name="Selected">
@@ -153,15 +153,15 @@
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
                                     <ContentPresenter
-            x:Name="ContentPresenter"
-            Content="{TemplateBinding Content}"
-            ContentTemplate="{TemplateBinding ContentTemplate}"
-            Margin="{TemplateBinding Padding}"
-            FontSize="{TemplateBinding FontSize}"
-            FontFamily="{TemplateBinding FontFamily}"
-            FontWeight="{TemplateBinding FontWeight}"
-            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                            x:Name="ContentPresenter"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                                            Margin="{TemplateBinding Padding}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">     
                                         <ContentPresenter.RenderTransform>
                                             <TranslateTransform x:Name="ContentPresenterTranslateTransform" />
                                         </ContentPresenter.RenderTransform>
@@ -184,18 +184,18 @@
                     </Grid>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
-            <PivotItem Header="Матрица 1" Margin="0">
+            <PivotItem Header="Матрица A" Margin="0">
                 <ScrollViewer>
-                    <local:MatrixBox/>
+                    <local:MatrixBox x:Name="MatrixA" Title="A"/>
                 </ScrollViewer>
             </PivotItem>
-            <PivotItem Header="Матрица 2" Margin="0">
+            <PivotItem Header="Матрица B" Margin="0">
                 <ScrollViewer>
-                    <local:MatrixBox/>
+                    <local:MatrixBox x:Name="MatrixB" Title="B"/>
                 </ScrollViewer>
             </PivotItem>
             <PivotItem Header="Результат" Margin="0">
-                
+                <Button Width="100" Height="100" Click="Button_Click" />
             </PivotItem>
         </Pivot>
     </Grid>

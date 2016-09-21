@@ -29,8 +29,10 @@ namespace MatrixCalc
         {
             try
             {
-
-                await (new MessageDialog(MONE.Matrix[0, 0].ToString())).ShowAsync();
+                double[,] matrix = MatrixA.Matrix;
+                await (new MessageDialog(matrix.ToString())).ShowAsync();
+                matrix[0, 0] = 9999D;
+                MatrixB.Matrix = matrix;
             }
             catch
             {

@@ -162,12 +162,12 @@
             <StackPanel>
                 <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE765;" FontSize="80"
                            HorizontalAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
-                <TextBlock Text="Заполните матрицу и&#x0a;проведите по экрану!" FontWeight="SemiLight" FontSize="21"
+                <TextBlock Name="FillMatrix" FontWeight="SemiLight" FontSize="21"
                            TextWrapping="Wrap" TextAlignment="Center" Margin="12,6" />
             </StackPanel>
         </Grid>
         <CommandBar Grid.Row="2" VerticalAlignment="Bottom">
-            <AppBarButton Icon="Delete" Label="Clear matrix" />
+            <AppBarButton Name="Clear" Icon="Delete" Label="Очистить&#x0a;матрицу" Click="Clear_Click" />
         </CommandBar>
     </Grid>
 </UserControl>
