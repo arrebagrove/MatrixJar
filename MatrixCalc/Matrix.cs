@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Windows.UI.Popups;
 
 /// <summary>
@@ -7,6 +8,10 @@ using Windows.UI.Popups;
 /// </summary>
 public class Matrix
 {
+    /// <summary>
+    /// Двуразмерный массив с ячейками типа double. 
+    /// Хранит данные матрицы.
+    /// </summary>
     private double[,] matrix;
 
     /// <summary>
@@ -145,12 +150,45 @@ public class Matrix
     /// <returns>Обратная матрица</returns>
     public Matrix Inverse()
     {
-        throw new NotImplementedException();
+        double determinant = this.GetDeterminant();
+        Matrix transposedMatrix = this.Transpose();
+
+        Matrix result = new Matrix(this.GetWidth(), this.GetHeight());
+
+        // implement logic...
+
+        return result;
     }
 
+    /// <summary>
+    /// Возвращает определитель (детерминант) матрицы.
+    /// </summary>
+    /// <returns>Определитель матрицы</returns>
     public double GetDeterminant()
     {
-        throw new NotImplementedException();
+        return GetDet(this, 1);
+    }
+
+    private double GetDet(Matrix matrix, int col)
+    {
+        double determinant = 0;
+
+        int width = matrix.GetWidth();
+        int height = matrix.GetHeight();
+
+        for (int x = 0; x < width; x++)
+        {
+            double det = matrix[x, 0];
+            det *= Math.Pow(-1, col);
+
+            Matrix temp = matrix;
+            
+            // implement logic here...            
+
+            det *= GetDet(matrix, ++col);
+        }
+
+        return determinant;
     }
 }
 

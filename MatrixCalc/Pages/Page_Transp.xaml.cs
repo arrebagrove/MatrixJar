@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MatrixCalc
+namespace myMatrix
 {
     public sealed partial class Page_Transp : Page
     {

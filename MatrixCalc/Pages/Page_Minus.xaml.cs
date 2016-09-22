@@ -2,7 +2,7 @@
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
-namespace MatrixCalc
+namespace myMatrix
 {
     public sealed partial class Page_Minus : Page
     {
