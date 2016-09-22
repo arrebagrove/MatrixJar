@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Popups;
 
 /// <summary>
 /// Представляет собой класс матриц, 
@@ -6,8 +7,7 @@
 /// </summary>
 public class Matrix
 {
-    public double[,] matrix;
-    public int ass = 0;
+    private double[,] matrix;
 
     /// <summary>
     /// Инициализирует объект матрицы.
@@ -97,16 +97,52 @@ public class Matrix
         return result;
     }
 
-    public static Matrix operator *(Matrix A, Matrix B)
-    {
-        throw new NotImplementedException();
-    }
-
+    /// <summary>
+    /// Возвращает транспонированную матрицу.
+    /// </summary>
+    /// <returns>Транспонированная матрица</returns>
     public Matrix Transpose()
     {
-        throw new NotImplementedException();
+        Matrix result = new Matrix(this.GetHeight(), this.GetWidth());
+        for (int x = 0; x < this.GetWidth(); x++)
+        {
+            for (int y = 0; y < this.GetHeight(); y++)
+            {
+                result[y, x] = this.matrix[x, y];
+            }
+        }
+        return result;
     }
 
+    /// <summary>
+    /// Возвращает произведение двух матриц.
+    /// </summary>
+    /// <param name="A">Матрица А</param>
+    /// <param name="B">Матрица В</param>
+    /// <returns>Произведение А * В</returns>
+    public static Matrix operator *(Matrix A, Matrix B)
+    {
+        if (A.GetHeight() != B.GetWidth())
+            throw new MatrixSizeException("Количество столбцов А не равно количеству строк В. Операция невозможна.");
+
+        Matrix result = new Matrix(A.GetWidth(), B.GetHeight());
+        for (int x = 0; x < result.GetWidth(); x++)
+        {
+            for (int y = 0; y < result.GetHeight(); y++)
+            {
+                for (int i = 0; i < A.GetHeight(); i++)
+                {
+                    result[x, y] += A[x, i] * B[i, y];
+                }
+            }
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Возвращает обратную матрицу.
+    /// </summary>
+    /// <returns>Обратная матрица</returns>
     public Matrix Inverse()
     {
         throw new NotImplementedException();

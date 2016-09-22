@@ -1,5 +1,4 @@
 ﻿using System;
-using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
 namespace MatrixCalc
@@ -12,21 +11,23 @@ namespace MatrixCalc
             App.ChosenIndex = 1;
         }
 
-        private async void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (((Pivot)sender).SelectedIndex == 2)
-            {
+            if (((Pivot)sender).SelectedIndex == 2) {
                 try
                 {
+                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.InnerMatrix = MatrixA.InnerMatrix + MatrixB.InnerMatrix;
-                }
-                catch (MatrixSizeException ex)
-                {
-                    await (new MessageDialog("Размеры матриц не совпадают!", "Ошибка!")).ShowAsync();
                 }
                 catch (MatrixInputInvalidException ex)
                 {
-
+                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                }
+                catch (MatrixSizeException ex)
+                {
+                    Result.SizeException.Text = "Размеры матриц не совпадают!Операции сложения и вычитания можно совершать только над матрицами одинаковой размерности.";
+                    Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (Exception ex)
                 {

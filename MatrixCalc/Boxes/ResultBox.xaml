@@ -14,21 +14,39 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Grid Name="MatrixOne" Margin="9 9 9 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="123" />
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="123" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="123" />
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="123" />
-            </Grid>
+        <StackPanel Margin="12" Grid.Row="0" Canvas.ZIndex="0">
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0 12 0 24"
+                               Text="Результат" TextAlignment="Center" FontWeight="SemiLight" />
+            <Border BorderThickness="4 0 4 0" CornerRadius="7"
+                    VerticalAlignment="Center" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}">
+                <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                    <Grid Name="MatrixOne">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </StackPanel>
+            </Border>
         </StackPanel>
+        <Grid Name="ErrorInputP" Visibility="Collapsed" Grid.Row="0" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-50,0,0">
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" FontSize="50" TextAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
+                <TextBlock Text="Ошибка ввода данных" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
+                <TextBlock Text="Похоже, что одна из матриц не заполнена или заполнена некорректно!" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
+            </StackPanel>
+        </Grid>
+        <Grid Name="ErrorSizeP" Visibility="Collapsed" Grid.Row="0" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-50,0,0">
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" FontSize="50" TextAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
+                <TextBlock Text="Ошибка выполнения" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
+                <TextBlock Name="SizeExceptionText" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
+            </StackPanel>
+        </Grid>
+        <CommandBar Grid.Row="1" VerticalAlignment="Bottom">
+            <AppBarButton Name="Copy" Icon="Copy" Label="Копировать матрицу" Click="Copy_Click" />
+        </CommandBar>
     </Grid>
 </UserControl>

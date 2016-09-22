@@ -144,7 +144,6 @@ namespace MatrixCalc
                 }
                 catch
                 {
-                    ShowError(string.Format(@"Ошибка ввода данных в матрицу {0}! Ячейки, в которые был осуществлен некорректный ввод, подсвечиваются серым цветом.", Title));
                     throw new MatrixInputInvalidException(string.Format("Неверный ввод в матрицу {0}!", Title));
                 }
             }
@@ -181,11 +180,6 @@ namespace MatrixCalc
             }
         }
 
-        private async void ShowError(string error)
-        {
-            await (new MessageDialog(error)).ShowAsync();
-        }
-
         public static readonly DependencyProperty TitleProperty = 
             DependencyProperty.Register("Title", typeof(string), typeof(string), 
                 new PropertyMetadata(null));
@@ -205,8 +199,44 @@ namespace MatrixCalc
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
+            AppBarButton apb = (AppBarButton)sender;
             foreach (UIElement child in MatrixOne.Children)
                 ((TextBox)child).Text = string.Empty;
+        }
+
+        private void Copy_Click(object sender, RoutedEventArgs e)
+        {
+            AppBarButton apb = (AppBarButton)sender;
+            try
+            {
+                App._matrix = InnerMatrix;
+                PopFlyout("Матрица скопирована!", apb);
+            }
+            catch
+            {
+                PopFlyout("Не удалось скопировать матрицу! Проверьте ввод.", apb);
+            }
+        }
+
+        private void Paste_Click(object sender, RoutedEventArgs e)
+        {
+            AppBarButton apb = (AppBarButton)sender;
+            if (App._matrix != null)
+            {
+                InnerMatrix = App._matrix;
+            }
+            else
+            {
+                PopFlyout("Сначала скопируйте матрицу.", apb);
+            }
+        }
+
+        private async void PopFlyout(string text, FrameworkElement sender)
+        {
+            Flyout fly = new Flyout() { Content = new TextBlock() { Text = text } };
+            fly.ShowAt(sender);
+            await Task.Delay(1000);
+            fly.Hide();
         }
     }
 }

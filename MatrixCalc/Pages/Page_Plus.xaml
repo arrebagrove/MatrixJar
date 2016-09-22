@@ -186,12 +186,12 @@
             </Pivot.HeaderTemplate>
             <PivotItem Header="Матрица A" Margin="0">
                 <ScrollViewer>
-                    <local:MatrixBox x:Name="MatrixA" Title="A"/>
+                    <local:MatrixBox x:Name="MatrixA" Title="A" />
                 </ScrollViewer>
             </PivotItem>
             <PivotItem Header="Матрица B" Margin="0">
                 <ScrollViewer>
-                    <local:MatrixBox x:Name="MatrixB" Title="B"/>
+                    <local:MatrixBox x:Name="MatrixB" Title="B" />
                 </ScrollViewer>
             </PivotItem>
             <PivotItem Header="Результат" Margin="0">
