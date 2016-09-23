@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 
 /// <summary>
@@ -13,7 +14,7 @@ public class Matrix
     /// Хранит данные матрицы.
     /// </summary>
     private double[,] matrix;
-
+    
     /// <summary>
     /// Инициализирует объект матрицы.
     /// </summary>
@@ -150,13 +151,10 @@ public class Matrix
     /// <returns>Обратная матрица</returns>
     public Matrix Inverse()
     {
-        double determinant = this.GetDeterminant();
-        Matrix transposedMatrix = this.Transpose();
-
         Matrix result = new Matrix(this.GetWidth(), this.GetHeight());
 
         // implement logic...
-
+        
         return result;
     }
 
@@ -169,6 +167,12 @@ public class Matrix
         return GetDet(this, 1);
     }
 
+    /// <summary>
+    /// Рекурсивный хелпер для получения определителя матрицы.
+    /// </summary>
+    /// <param name="matrix">Матрица</param>
+    /// <param name="col">Номер колонки разложения</param>
+    /// <returns>Определитель матрицы</returns>
     private double GetDet(Matrix matrix, int col)
     {
         double determinant = 0;
@@ -178,17 +182,58 @@ public class Matrix
 
         for (int x = 0; x < width; x++)
         {
-            double det = matrix[x, 0];
-            det *= Math.Pow(-1, col);
+            double det = matrix[x, 0] * Math.Pow(-1, col);
 
             Matrix temp = matrix;
-            
-            // implement logic here...            
+            temp = RemoveRow(temp, 0);
+            temp = RemoveColumn(temp, x);
 
-            det *= GetDet(matrix, ++col);
+            double det2 = GetDet(temp, col += 1);
+            if (det2 != 0) det *= det2;
+            determinant += det;
         }
 
+        (new MessageDialog(determinant.ToString())).ShowAsync();
         return determinant;
+    }
+
+    /// <summary>
+    /// Удаляет колонку из матрицы.
+    /// </summary>
+    /// <param name="matrix">Матрица</param>
+    /// <param name="index">Индекс удаляемой строки</param>
+    /// <returns>Новая матрица</returns>
+    public Matrix RemoveRow(Matrix matrix, int index)
+    {
+        Matrix result = new Matrix(matrix.GetWidth(), matrix.GetHeight());
+        for (int x = 0; x < matrix.GetHeight() - 1; x++)
+        {
+            for (int y = 0; y < matrix.GetWidth(); y++)
+            {
+                result[x, y] = matrix[x < index ? x : x + 1, y];
+            }
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Удаляет столбец из матрицы.
+    /// </summary>
+    /// <param name="matrix">Матрица</param>
+    /// <param name="index">Индекс удаляемой колонки</param>
+    /// <returns>Новая матрица</returns>
+    public Matrix RemoveColumn(Matrix matrix, int index)
+    {
+        Matrix result = new Matrix(matrix.GetWidth(), matrix.GetHeight());   
+        for (int col = 0; col < result.GetWidth(); col++)
+        {
+            for (int row = 0; row < result.GetHeight(); row++)
+            {
+                    result[col, row] = matrix[col, row];
+                
+            }
+        }
+        return result;
     }
 }
 

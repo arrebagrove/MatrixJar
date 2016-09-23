@@ -114,6 +114,11 @@ namespace myMatrix
             catch
             {
                 textBox.BorderBrush = Resources["AppBarItemDisabledForegroundThemeBrush"] as Brush;
+                if (!string.IsNullOrEmpty(textBox.Text))
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
             }
         }
 

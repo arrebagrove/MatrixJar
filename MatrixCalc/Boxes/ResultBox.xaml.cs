@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -44,7 +45,7 @@ namespace myMatrix
                     for (int y = 0; y < rowCount; y++)
                     {
                         TextBlock textBlock = createTextBlock(x, y);
-                        textBlock.Text = value[x, y].ToString();
+                        textBlock.Text = ((Math.Floor(value[x, y] * 100) / 100)).ToString();
                         MatrixOne.Children.Add(textBlock);
                     }
                 }
