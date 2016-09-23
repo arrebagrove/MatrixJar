@@ -154,19 +154,41 @@ namespace myMatrix
         /// <returns>Обратная матрица</returns>
         public Matrix Inverse()
         {
-            Matrix transposed = this.Transpose();
+            int width = this.GetWidth();
+            int height = this.GetHeight();
             double determinant = this.GetDeterminant();
 
-            Matrix result = new Matrix(transposed.GetWidth(), transposed.GetHeight());
-            for (int row = 0; row < result.GetHeight(); row++)
+            Matrix result = new Matrix(width, height);
+
+            if ((width <= 2) && (height <= 2))
             {
-                for (int col = 0; col < result.GetWidth(); col++)
+                for (int x = 0; x < width; x++)
                 {
-                    result[col, row] = transposed[col, row] * (1 / determinant);
+                    for (int y = 0; y < height; y++)
+                    {
+                        result[width - 1 - x, height - 1 - y] = this[x, y] / determinant * Math.Pow(-1, x + y);
+                    }
+                }
+
+                return result.Transpose();
+            }
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    double minor = Math.Pow(-1, x + y);
+
+                    Matrix temp = this;
+                    temp = RemoveRow(temp, x);
+                    temp = RemoveColumn(temp, y);
+                    minor *= GetDet(temp);
+
+                    result[x, y] = minor / determinant;
                 }
             }
 
-            return result;
+            return result.Transpose();
         }
 
         /// <summary>
@@ -219,7 +241,7 @@ namespace myMatrix
         /// <param name="matrix">Матрица</param>
         /// <param name="index">Индекс удаляемой строки</param>
         /// <returns>Новая матрица</returns>
-        public Matrix RemoveRow(Matrix matrix, int index)
+        private Matrix RemoveRow(Matrix matrix, int index)
         {
             int rowCount = matrix.GetHeight();
             int columnCount = matrix.GetWidth() - 1;
@@ -242,7 +264,7 @@ namespace myMatrix
         /// <param name="matrix">Матрица</param>
         /// <param name="index">Индекс удаляемой колонки</param>
         /// <returns>Новая матрица</returns>
-        public Matrix RemoveColumn(Matrix matrix, int index)
+        private Matrix RemoveColumn(Matrix matrix, int index)
         {
             int rowCount = matrix.GetHeight() - 1;
             int columnCount = matrix.GetWidth();
