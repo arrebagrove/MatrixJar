@@ -154,9 +154,17 @@ namespace myMatrix
         /// <returns>Обратная матрица</returns>
         public Matrix Inverse()
         {
-            Matrix result = new Matrix(this.GetWidth(), this.GetHeight());
+            Matrix transposed = this.Transpose();
+            double determinant = this.GetDeterminant();
 
-            // implement logic...
+            Matrix result = new Matrix(transposed.GetWidth(), transposed.GetHeight());
+            for (int row = 0; row < result.GetHeight(); row++)
+            {
+                for (int col = 0; col < result.GetWidth(); col++)
+                {
+                    result[col, row] = transposed[col, row] * (1 / determinant);
+                }
+            }
 
             return result;
         }
@@ -167,7 +175,7 @@ namespace myMatrix
         /// <returns>Определитель матрицы</returns>
         public double GetDeterminant()
         {
-            return GetDet(this, 1);
+            return GetDet(this);
         }
 
         /// <summary>
@@ -176,10 +184,9 @@ namespace myMatrix
         /// <param name="matrix">Матрица</param>
         /// <param name="col">Номер колонки разложения</param>
         /// <returns>Определитель матрицы</returns>
-        private double GetDet(Matrix matrix, int col)
+        private double GetDet(Matrix matrix)
         {
             double determinant = 0;
-
             int width = matrix.GetWidth();
             int height = matrix.GetHeight();
 
@@ -187,22 +194,22 @@ namespace myMatrix
             {
                 for (int x = 0; x < width; x++)
                 {
-                    double det = matrix[x, 0] * Math.Pow(-1, 1 + x);
+                    double det = matrix[0, x] * Math.Pow(-1, x);
 
                     Matrix temp = matrix;
                     temp = RemoveRow(temp, 0);
                     temp = RemoveColumn(temp, x);
-                    det *= GetDet(temp, col++);
+                    det *= GetDet(temp);
 
                     determinant += det;
                 }
             }
             else
             {
-                determinant = (matrix[0, 0] * matrix[1, 1]) - (matrix[0, 1] * matrix[1, 0]);
+                determinant = (matrix[0, 0] * matrix[1, 1]) - 
+                    (matrix[0, 1] * matrix[1, 0]);
             } 
-
-            (new MessageDialog(determinant.ToString())).ShowAsync();
+            
             return determinant;
         }
 
