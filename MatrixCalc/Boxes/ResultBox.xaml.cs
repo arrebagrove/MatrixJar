@@ -30,16 +30,22 @@ namespace myMatrix
             }
             set
             {
+                // Get matrix dimensions
                 int columnCount = value.GetWidth();
                 int rowCount = value.GetHeight();
 
+                // Clear initially generated xaml
                 MatrixOne.Children.Clear();
                 MatrixOne.RowDefinitions.Clear();
                 MatrixOne.ColumnDefinitions.Clear();
 
-                for (int x = 0; x < rowCount; x++) MatrixOne.ColumnDefinitions.Add(new ColumnDefinition());
-                for (int x = 0; x < columnCount; x++) MatrixOne.RowDefinitions.Add(new RowDefinition());
+                // Set column and row count of a new matrix
+                for (int x = 0; x < rowCount; x++)
+                    MatrixOne.ColumnDefinitions.Add(new ColumnDefinition());
+                for (int x = 0; x < columnCount; x++)
+                    MatrixOne.RowDefinitions.Add(new RowDefinition());
 
+                // Fill the matrix with numbers
                 for (int x = 0; x < columnCount; x++)
                 {
                     for (int y = 0; y < rowCount; y++)

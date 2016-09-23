@@ -164,8 +164,10 @@ namespace myMatrix
                 MatrixOne.ColumnDefinitions.Clear();
 
                 // Set column and row count of a new matrix
-                for (int x = 0; x < rowCount; x++) MatrixOne.ColumnDefinitions.Add(new ColumnDefinition());
-                for (int x = 0; x < columnCount; x++) MatrixOne.RowDefinitions.Add(new RowDefinition());
+                for (int x = 0; x < rowCount; x++)
+                    MatrixOne.ColumnDefinitions.Add(new ColumnDefinition());
+                for (int x = 0; x < columnCount; x++)
+                    MatrixOne.RowDefinitions.Add(new RowDefinition());
 
                 // Fill the matrix with numbers
                 for (int x = 0; x < columnCount; x++)

@@ -31,9 +31,13 @@ namespace myMatrix
             {
                 try
                 {
-                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    Result.InnerMatrix = MatrixA.InnerMatrix.RemoveColumn(MatrixA.InnerMatrix, 1);
+                    Result.ErrorInput.Visibility = 
+                        Windows.UI.Xaml.Visibility.Collapsed;
+                    Result.ErrorSize.Visibility = 
+                        Windows.UI.Xaml.Visibility.Collapsed;
+                    Matrix matrix = new Matrix(1, 1);
+                    matrix[0, 0] = MatrixA.InnerMatrix.GetDeterminant();
+                    Result.InnerMatrix = matrix;
                 }
                 catch (MatrixInputInvalidException ex)
                 {
