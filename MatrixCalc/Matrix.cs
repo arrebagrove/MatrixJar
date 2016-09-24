@@ -13,7 +13,7 @@ namespace myMatrix
     public class Matrix
     {
         /// <summary>
-        /// Двуразмерный массив с ячейками типа double. 
+        /// Двумерный массив с ячейками типа double. 
         /// Хранит данные матрицы.
         /// </summary>
         private double[,] matrix;
@@ -21,8 +21,8 @@ namespace myMatrix
         /// <summary>
         /// Инициализирует объект матрицы.
         /// </summary>
-        /// <param name="rowCount">Количество строк.</param>
-        /// <param name="columnCount">Количество столбцов.</param>
+        /// <param name="rowCount">Количество строк</param>
+        /// <param name="columnCount">Количество столбцов</param>
         public Matrix(int rowCount, int columnCount)
         {
             this.matrix = new double[rowCount, columnCount];
@@ -31,8 +31,8 @@ namespace myMatrix
         /// <summary>
         /// Получает элемент матрицы по двум индексам.
         /// </summary>
-        /// <param name="x">Столбец.</param>
-        /// <param name="y">Строка.</param>
+        /// <param name="x">Столбец</param>
+        /// <param name="y">Строка</param>
         /// <returns>Элемент матрицы.</returns>
         public double this[int x, int y]
         {
@@ -43,7 +43,7 @@ namespace myMatrix
         /// <summary>
         /// Получает количество столбцов матрицы.
         /// </summary>
-        /// <returns>Количество строк.</returns>
+        /// <returns>Количество столбцов</returns>
         public int GetWidth()
         {
             return matrix.GetLength(0);
@@ -52,7 +52,7 @@ namespace myMatrix
         /// <summary>
         /// Получает количество строк матрицы.
         /// </summary>
-        /// <returns>Количество столбцов.</returns>
+        /// <returns>Количество строк</returns>
         public int GetHeight()
         {
             return matrix.GetLength(1);
@@ -156,6 +156,9 @@ namespace myMatrix
         {
             int width = this.GetWidth();
             int height = this.GetHeight();
+            if (width != height)
+                throw new MatrixSizeException("Количество строк не равно количеству столбцов!");
+
             double determinant = this.GetDeterminant();
 
             Matrix result = new Matrix(width, height);
@@ -211,6 +214,8 @@ namespace myMatrix
             double determinant = 0;
             int width = matrix.GetWidth();
             int height = matrix.GetHeight();
+            if (width != height)
+                throw new MatrixSizeException("Количество строк не равно количеству столбцов!");
 
             if ((width > 2) && (height > 2))
             {

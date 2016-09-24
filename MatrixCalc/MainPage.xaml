@@ -8,10 +8,28 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline" />
+                        <Setter Target="MySplitView.CompactPaneLength" Value="48" />
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True" />
+                        <Setter Target="HamburgerListBox.Background" Value="{ThemeResource SystemChromeMediumColor}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        
         <Button Foreground="White" Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
                 Canvas.ZIndex="3" Name="MyButton" FontSize="20" FontFamily="Segoe MDL2 Assets" 
                 Content="&#xE700;" Width="48" Height="48" Click="MyButton_Click" VerticalAlignment="Top" />
@@ -23,10 +41,11 @@
         <StackPanel Grid.Row="0" Name="NavBackground" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
         <SplitView Grid.Row="0" Grid.RowSpan="2" x:Name="MySplitView" DisplayMode="Overlay" OpenPaneLength="250">
             <SplitView.Pane>
-                <ListBox ManipulationCompleted="SplitView_Close" ScrollViewer.VerticalScrollMode="Disabled" Background="{ThemeResource SystemChromeLowColor}" SelectionMode="Single" Name="HamburgerListBox" SelectionChanged="HamburgerListBox_SelectionChanged">
+                <ListBox ManipulationCompleted="SplitView_Close" ScrollViewer.VerticalScrollMode="Disabled" Background="{ThemeResource SystemChromeLowColor}" 
+                         SelectionMode="Single" Name="HamburgerListBox" SelectionChanged="HamburgerListBox_SelectionChanged">
                     <ListBoxItem Background="{ThemeResource SystemControlBackgroundAccentBrush}" Name="UnusedItem" Height="48" Padding="0" IsEnabled="False">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <TextBlock Name="Unutext" Visibility="Visible" Text="MATRIXCALC" Foreground="White" FontWeight="Bold" Margin="60,0,0,0" VerticalAlignment="Center" />
+                            <TextBlock Name="Unutext" Visibility="Visible" Text="MYMATRIX" Foreground="White" FontWeight="Bold" Margin="60,0,0,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="PlusItem" Height="48">

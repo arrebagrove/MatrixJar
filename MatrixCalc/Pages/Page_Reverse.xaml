@@ -18,13 +18,27 @@
     </Page.Transitions>
 
     <Grid>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleText.Margin" Value="12 14 0 0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <TextBlock Text="ОБРАТНАЯ МАТРИЦА" FontWeight="Bold" Foreground="White"
-                       FontSize="15" Margin="60,14,0,0" />
+                       FontSize="15" Margin="60,14,0,0" Name="TitleText" />
         </Grid>
         <Grid Canvas.ZIndex="0" 
               Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
@@ -185,14 +199,10 @@
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <PivotItem Header="Матрица A" Margin="0">
-                <ScrollViewer>
-                    <local:MatrixBox x:Name="MatrixA" Title="A" />
-                </ScrollViewer>
+                <local:MatrixBox x:Name="MatrixA" Title="A" />
             </PivotItem>
             <PivotItem Header="Результат" Margin="0">
-                <ScrollViewer>
-                    <local:ResultBox x:Name="Result" />
-                </ScrollViewer>
+                <local:ResultBox x:Name="Result" Title="Обратная матрица А" />
             </PivotItem>
         </Pivot>
     </Grid>

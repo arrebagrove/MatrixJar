@@ -9,120 +9,147 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
+    <UserControl.Resources>
+        <Storyboard x:Name="PasteEnabling">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Paste">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Paste">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="Visible"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PasteSeparator">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="PasteSeparator">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="Visible"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
     <Grid Margin="0" Height="Auto" Name="MainPanel">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Grid Name="MatrixOne" Margin="9 9 9 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Row="0">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBox TextChanged="TextBox_TextChanged"
+                <StackPanel Grid.Row="0">
+                    <Grid Name="MatrixOne" Margin="9 9 9 0" MaxWidth="500">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBox TextChanged="TextBox_TextChanged"
                          Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }" 
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
-                    <TextBox.Transitions>
-                        <TransitionCollection>
-                            <AddDeleteThemeTransition />
-                        </TransitionCollection>
-                    </TextBox.Transitions>
-                </TextBox>
-                <TextBox TextChanged="TextBox_TextChanged"
+                            <TextBox.Transitions>
+                                <TransitionCollection>
+                                    <AddDeleteThemeTransition />
+                                </TransitionCollection>
+                            </TextBox.Transitions>
+                        </TextBox>
+                        <TextBox TextChanged="TextBox_TextChanged"
                     Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
-                    <TextBox.Transitions>
-                        <TransitionCollection>
-                            <AddDeleteThemeTransition />
-                        </TransitionCollection>
-                    </TextBox.Transitions>
-                </TextBox>
-                <TextBox TextChanged="TextBox_TextChanged"
+                            <TextBox.Transitions>
+                                <TransitionCollection>
+                                    <AddDeleteThemeTransition />
+                                </TransitionCollection>
+                            </TextBox.Transitions>
+                        </TextBox>
+                        <TextBox TextChanged="TextBox_TextChanged"
                     Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
-                    <TextBox.Transitions>
-                        <TransitionCollection>
-                            <AddDeleteThemeTransition />
-                        </TransitionCollection>
-                    </TextBox.Transitions>
-                </TextBox>
-                <TextBox TextChanged="TextBox_TextChanged"
+                            <TextBox.Transitions>
+                                <TransitionCollection>
+                                    <AddDeleteThemeTransition />
+                                </TransitionCollection>
+                            </TextBox.Transitions>
+                        </TextBox>
+                        <TextBox TextChanged="TextBox_TextChanged"
                     Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
-                    <TextBox.Transitions>
-                        <TransitionCollection>
-                            <AddDeleteThemeTransition />
-                        </TransitionCollection>
-                    </TextBox.Transitions>
-                </TextBox>
-            </Grid>
-            <Grid HorizontalAlignment="Stretch" Padding="9 18" Name="EditMatrix"
-                  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <Grid.Transitions>
-                    <TransitionCollection>
-                        <AddDeleteThemeTransition />
-                    </TransitionCollection>
-                </Grid.Transitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Button Content="&#xE710;" HorizontalAlignment="Stretch"
+                            <TextBox.Transitions>
+                                <TransitionCollection>
+                                    <AddDeleteThemeTransition />
+                                </TransitionCollection>
+                            </TextBox.Transitions>
+                        </TextBox>
+                    </Grid>
+                    <Grid HorizontalAlignment="Stretch" Padding="9 18" Name="EditMatrix" MaxWidth="500"
+                  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+                        <Grid.Transitions>
+                            <TransitionCollection>
+                                <AddDeleteThemeTransition />
+                            </TransitionCollection>
+                        </Grid.Transitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Button Content="&#xE710;" HorizontalAlignment="Stretch"
                             Grid.Column="0" Margin="3" Grid.Row="0"
                             FontFamily="Segoe MDL2 Assets" Name="AddRow"
                             Click="AddRow_Click" FontSize="13"/>
-                <TextBlock Text="2" HorizontalAlignment="Center" Margin="3 0" Name="xC"
+                        <TextBlock Text="2" HorizontalAlignment="Center" Margin="3 0" Name="xC"
                             VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
-                <Button Content="&#xE738;" HorizontalAlignment="Stretch"
+                        <Button Content="&#xE738;" HorizontalAlignment="Stretch"
                             Grid.Column="2" Margin="3" Grid.Row="0"
                             FontFamily="Segoe MDL2 Assets" Name="RemRow"
                             Click="RemRow_Click" FontSize="13"/>
-                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE711;" Grid.Row="0"
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE711;" Grid.Row="0"
                            Grid.Column="3" HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
-                <Button Content="&#xE710;" HorizontalAlignment="Stretch"
+                        <Button Content="&#xE710;" HorizontalAlignment="Stretch"
                             Grid.Column="4" Margin="3" Grid.Row="0" 
                             FontFamily="Segoe MDL2 Assets" Name="AddColumn"
                             Click="AddColumn_Click" FontSize="13"/>
-                <TextBlock Text="2" HorizontalAlignment="Center" Margin="3 0" Name="yC"
+                        <TextBlock Text="2" HorizontalAlignment="Center" Margin="3 0" Name="yC"
                             VerticalAlignment="Center" Grid.Row="0" Grid.Column="5"/>
-                <Button Content="&#xE738;" HorizontalAlignment="Stretch"
+                        <Button Content="&#xE738;" HorizontalAlignment="Stretch"
                             Grid.Column="6" Margin="3" Grid.Row="0" 
                             FontFamily="Segoe MDL2 Assets" Name="RemColumn"
                             Click="RemColumn_Click" FontSize="13"/>
-            </Grid>
-        </StackPanel>
-        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.Transitions>
-                <TransitionCollection>
-                    <AddDeleteThemeTransition />
-                </TransitionCollection>
-            </Grid.Transitions>
-            <StackPanel>
-                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE765;" FontSize="80"
+                    </Grid>
+                </StackPanel>
+                <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 50" MaxWidth="500">
+                    <Grid.Transitions>
+                        <TransitionCollection>
+                            <AddDeleteThemeTransition />
+                        </TransitionCollection>
+                    </Grid.Transitions>
+                    <StackPanel>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE765;" FontSize="80"
                            HorizontalAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
-                <TextBlock Name="FillMatrix" FontWeight="SemiLight" FontSize="21"
+                        <TextBlock Name="FillMatrix" FontWeight="SemiLight" FontSize="21"
                            TextWrapping="Wrap" TextAlignment="Center" Margin="12,6" />
-            </StackPanel>
-        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
         <CommandBar Grid.Row="2" VerticalAlignment="Bottom">
-            <AppBarButton Name="Paste" Icon="Paste" Label="Загрузить матрицу" Click="Paste_Click"/>
+            <AppBarButton Name="Paste" Icon="Paste" Visibility="Collapsed" Label="Загрузить матрицу" Click="Paste_Click"/>
+            <AppBarSeparator Name="PasteSeparator" Visibility="Collapsed" />
             <AppBarButton Name="Copy" Icon="Copy" Label="Копировать матрицу" Click="Copy_Click" />
-            <AppBarButton Name="Clear" Icon="Delete" Label="Очистить&#x0a;матрицу" Click="Clear_Click"/>
+            <AppBarButton Name="Clear" Icon="Delete" Label="Очистить матрицу" Click="Clear_Click"/>
         </CommandBar>
     </Grid>
 </UserControl>

@@ -21,12 +21,19 @@ namespace myMatrix
         public Page_Determinant()
         {
             this.InitializeComponent();
+            Result.commandBar.Visibility = Visibility.Collapsed;
             App.ChosenIndex = 6;
         }
 
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (App._matrix != null)
+            {
+                MatrixA.PasteButton.Visibility = 
+                    MatrixA.PasteButtonSeparator.Visibility = Visibility.Visible;
+            }
+
             if (((Pivot)sender).SelectedIndex == 1)
             {
                 try
@@ -45,7 +52,7 @@ namespace myMatrix
                 }
                 catch (MatrixSizeException ex)
                 {
-                    Result.SizeException.Text = "Размеры матриц не совпадают!Операции сложения и вычитания можно совершать только над матрицами одинаковой размерности.";
+                    Result.SizeException.Text = "Количество строк не равно количеству столбцов, определитель не существует!";
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (Exception ex)

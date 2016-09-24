@@ -26,6 +26,12 @@ namespace myMatrix
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (App._matrix != null)
+            {
+                MatrixA.PasteButton.Visibility =
+                    MatrixA.PasteButtonSeparator.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+
             if (((Pivot)sender).SelectedIndex == 1)
             {
                 try

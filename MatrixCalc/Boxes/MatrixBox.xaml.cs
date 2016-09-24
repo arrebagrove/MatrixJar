@@ -218,6 +218,7 @@ namespace myMatrix
             {
                 App._matrix = InnerMatrix;
                 PopFlyout("Матрица скопирована!", apb);
+                PasteEnabling.Begin();
             }
             catch
             {
@@ -244,6 +245,22 @@ namespace myMatrix
             fly.ShowAt(sender);
             await Task.Delay(1000);
             fly.Hide();
+        }
+
+        public AppBarButton PasteButton
+        {
+            get
+            {
+                return Paste;
+            }
+        }
+
+        public AppBarSeparator PasteButtonSeparator
+        {
+            get
+            {
+                return PasteSeparator;
+            }
         }
     }
 }

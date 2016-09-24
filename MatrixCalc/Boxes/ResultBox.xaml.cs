@@ -62,6 +62,7 @@ namespace myMatrix
         {
             TextBlock textBlock = new TextBlock() { Margin = new Thickness(0, 9, 0, 9), MinWidth = 0 };
             textBlock.SetValue(Grid.RowProperty, x);
+            textBlock.FontSize = textBlock.FontSize * 1.1;
             textBlock.SetValue(Grid.ColumnProperty, y);
             textBlock.Transitions = new TransitionCollection();
             textBlock.Transitions.Add(new AddDeleteThemeTransition());
@@ -114,5 +115,31 @@ namespace myMatrix
                 return this.SizeExceptionText;
             }
         }
+
+        public static readonly DependencyProperty TitleProperty =
+           DependencyProperty.Register("Title", typeof(string), typeof(string),
+               new PropertyMetadata(null));
+
+        public string Title
+        {
+            get
+            {
+                return (string)GetValue(TitleProperty);
+            }
+            set
+            {
+                SetValue(TitleProperty, value);
+                ResultType.Text = Title;
+            }
+        }
+        
+        public CommandBar commandBar
+        {
+            get
+            {
+                return AppBar;
+            }
+        }
+
     }
 }
