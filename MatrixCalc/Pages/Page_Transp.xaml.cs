@@ -36,17 +36,25 @@ namespace myMatrix
             {
                 try
                 {
+                    Result.commandBar.Visibility = Visibility.Visible;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.InnerMatrix = MatrixA.InnerMatrix.Transpose();
                 }
                 catch (MatrixInputInvalidException ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (MatrixSizeException ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                }
+                catch (Exception ex)
+                {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+
                 }
             }
         }

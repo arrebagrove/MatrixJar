@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -36,21 +37,27 @@ namespace myMatrix
             {
                 try
                 {
+                    Result.commandBar.Visibility = Visibility.Visible;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.InnerMatrix = MatrixA.InnerMatrix.Inverse();
                 }
                 catch (MatrixInputInvalidException ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (MatrixSizeException ex)
                 {
-                    Result.SizeException.Text = "Количество строк не равно количеству столбцов, определитель не существует!";
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+                    ResourceLoader rl = new ResourceLoader();
+                    Result.SizeException.Text = rl.GetString("DetNotExists");
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (Exception ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+
                 }
             }
         }

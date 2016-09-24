@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -37,21 +38,26 @@ namespace myMatrix
             {
                 try
                 {
+                    Result.commandBar.Visibility = Visibility.Visible;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.InnerMatrix = MatrixA.InnerMatrix * MatrixB.InnerMatrix;
                 }
                 catch (MatrixInputInvalidException ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (MatrixSizeException ex)
                 {
-                    Result.SizeException.Text = "Количество столбцов матрицы А не равно количеству строк матрицы В. Операция умножения возможна только в том случае, если это условие выполнено!";
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+                    ResourceLoader rl = new ResourceLoader();
+                    Result.SizeException.Text = rl.GetString("MultiErr");
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (Exception ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
 
                 }
             }

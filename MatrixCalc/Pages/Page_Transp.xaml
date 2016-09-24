@@ -37,7 +37,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <TextBlock Text="ТРАНСПОНИРОВАНИЕ" FontWeight="Bold" Foreground="White"
+            <TextBlock x:Uid="Transpose" Text="ТРАНСПОНИРОВАНИЕ" FontWeight="Bold" Foreground="White"
                        FontSize="15" Margin="60,14,0,0" Name="TitleText" />
         </Grid>
         <Grid Canvas.ZIndex="0" 
@@ -198,11 +198,11 @@
                     </Grid>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
-            <PivotItem Header="Матрица A" Margin="0">
+            <PivotItem x:Uid="MatrixA" Header="Матрица A" Margin="0">
                 <local:MatrixBox x:Name="MatrixA" Title="A" />
             </PivotItem>
-            <PivotItem Header="Результат" Margin="0">
-                <local:ResultBox x:Name="Result" Title="Транспонированная матрица А" />
+            <PivotItem x:Uid="Result" Header="Результат" Margin="0">
+                <local:ResultBox x:Uid="ResTranspose" x:Name="Result" />
             </PivotItem>
         </Pivot>
     </Grid>

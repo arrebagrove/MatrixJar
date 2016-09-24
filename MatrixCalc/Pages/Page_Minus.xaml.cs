@@ -1,6 +1,8 @@
 ﻿using System;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 namespace myMatrix
 {
@@ -26,19 +28,24 @@ namespace myMatrix
             {
                 try
                 {
+                    Result.commandBar.Visibility = Visibility.Visible;
                     Result.InnerMatrix = MatrixA.InnerMatrix - MatrixB.InnerMatrix;
                 }
                 catch (MatrixSizeException ex)
                 {
-                    Result.SizeException.Text = "Размеры матриц не совпадают! Операции сложения и вычитания можно совершать только над матрицами одинаковой размерности.";
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+                    ResourceLoader rl = new ResourceLoader();
+                    Result.SizeException.Text =rl.GetString("PlusMinusErr");
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (MatrixInputInvalidException ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (Exception ex)
                 {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
 
                 }
             }

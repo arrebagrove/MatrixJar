@@ -5,7 +5,6 @@ using Windows.UI.Popups;
 
 namespace myMatrix
 {
-
     /// <summary>
     /// Представляет класс матриц, используемых 
     /// матричным калькулятором.

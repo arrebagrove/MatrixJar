@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -199,8 +200,9 @@ namespace myMatrix
             }
             set
             {
+                ResourceLoader rl = new ResourceLoader();
                 SetValue(TitleProperty, value);
-                FillMatrix.Text = string.Format("Заполните матрицу {0} и\nпроведите по экрану!", value);
+                FillMatrix.Text = string.Format(rl.GetString("FillMatrix"), value);
             }
         }
 
@@ -213,21 +215,23 @@ namespace myMatrix
 
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
+            ResourceLoader rl = new ResourceLoader();
             AppBarButton apb = (AppBarButton)sender;
             try
             {
                 App._matrix = InnerMatrix;
-                PopFlyout("Матрица скопирована!", apb);
+                PopFlyout(rl.GetString("CopySuccess"), apb);
                 PasteEnabling.Begin();
             }
             catch
             {
-                PopFlyout("Не удалось скопировать матрицу! Проверьте ввод.", apb);
+                PopFlyout(rl.GetString("CopyFail"), apb);
             }
         }
 
         private void Paste_Click(object sender, RoutedEventArgs e)
         {
+            ResourceLoader rl = new ResourceLoader();
             AppBarButton apb = (AppBarButton)sender;
             if (App._matrix != null)
             {
@@ -235,7 +239,7 @@ namespace myMatrix
             }
             else
             {
-                PopFlyout("Сначала скопируйте матрицу.", apb);
+                PopFlyout(rl.GetString("CopyFirst"), apb);
             }
         }
 

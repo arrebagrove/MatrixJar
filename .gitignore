@@ -23,6 +23,7 @@ $RECYCLE.BIN/
 MatrixCalc/bin
 MatrixCalc/obj
 MatrixCalc/Properties
+MatrixCalc/AppPackages
 
 # OSX
 # =========================
@@ -56,3 +57,5 @@ MatrixCalc/Package.appxmanifest
 *.user
 *.config
 .vs/MatrixCalc/v14/.suo
+*.appx
+*.txt

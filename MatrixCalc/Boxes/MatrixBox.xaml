@@ -146,10 +146,10 @@
             </Grid>
         </ScrollViewer>
         <CommandBar Grid.Row="2" VerticalAlignment="Bottom">
-            <AppBarButton Name="Paste" Icon="Paste" Visibility="Collapsed" Label="Загрузить матрицу" Click="Paste_Click"/>
+            <AppBarButton x:Uid="Paste" Name="Paste" Icon="Paste" Visibility="Collapsed" Click="Paste_Click"/>
             <AppBarSeparator Name="PasteSeparator" Visibility="Collapsed" />
-            <AppBarButton Name="Copy" Icon="Copy" Label="Копировать матрицу" Click="Copy_Click" />
-            <AppBarButton Name="Clear" Icon="Delete" Label="Очистить матрицу" Click="Clear_Click"/>
+            <AppBarButton x:Uid="Copy" Name="Copy" Icon="Copy" Click="Copy_Click" />
+            <AppBarButton x:Uid="Clear" Name="Clear" Icon="Delete" Click="Clear_Click"/>
         </CommandBar>
     </Grid>
 </UserControl>

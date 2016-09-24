@@ -51,19 +51,19 @@
                     <ListBoxItem Name="PlusItem" Height="48">
                         <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
                             <TextBlock Text="&#xE710;" FontSize="15" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
-                            <TextBlock Text="Сложение" Margin="28,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock x:Uid="MenuPlus" Text="Сложение" Margin="28,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="MinusItem" Height="48">
                         <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
                             <TextBlock Text="&#xE738;" FontSize="15" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
-                            <TextBlock Text="Вычитание" Margin="28,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock x:Uid="MenuMinus" Text="Вычитание" Margin="28,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="MultiMatrixItem" Height="48">
                         <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
                             <TextBlock Text="&#xE711;" FontSize="15" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
-                            <TextBlock Text="Умножение" Margin="28,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock x:Uid="MenuMulti" Text="Умножение" Margin="28,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="TranspItem" Height="48">
@@ -78,7 +78,7 @@
                                       Y2="20" X2="7.5"
                                       />
                             </Grid>
-                            <TextBlock Text="Транспонирование" Margin="27,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock x:Uid="MenuTranspose" Text="Транспонирование" Margin="27,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="ReverseItem" Height="48">
@@ -93,7 +93,7 @@
                                       X2="12.5" Y2="15"
                                       />
                             </Grid>
-                            <TextBlock Text="Обратная матрица" Margin="29,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock x:Uid="MenuInverse" Text="Обратная матрица" Margin="29,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="DeterminantItem" Height="48">
@@ -112,7 +112,7 @@
                                           X2="7.5" Y1="14" StrokeThickness="1"
                                           />
                             </Grid>
-                            <TextBlock Text="Определитель" Margin="29,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock x:Uid="MenuDet" Text="Определитель" Margin="29,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>

@@ -36,21 +36,21 @@
                 <Grid Name="ErrorInputP" Visibility="Collapsed" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-50,0,0">
                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" FontSize="50" TextAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
-                        <TextBlock Text="Ошибка ввода данных" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
-                        <TextBlock Text="Похоже, что одна из матриц не заполнена или заполнена некорректно!" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
+                        <TextBlock x:Uid="ErrorInput" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
+                        <TextBlock x:Uid="ErrorInputHelper" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
                     </StackPanel>
                 </Grid>
                 <Grid Name="ErrorSizeP" Visibility="Collapsed" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-50,0,0">
                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" FontSize="50" TextAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
-                        <TextBlock Text="Ошибка выполнения" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
+                        <TextBlock x:Uid="ErrorOperation" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
                         <TextBlock Name="SizeExceptionText" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
                     </StackPanel>
                 </Grid>
             </Grid>
         </ScrollViewer>
         <CommandBar Grid.Row="1" VerticalAlignment="Bottom" Name="AppBar">
-            <AppBarButton Name="Copy" Icon="Copy" Label="Копировать матрицу" Click="Copy_Click" />
+            <AppBarButton x:Uid="Copy" Name="Copy" Icon="Copy" Click="Copy_Click" />
         </CommandBar>
     </Grid>
 </UserControl>
