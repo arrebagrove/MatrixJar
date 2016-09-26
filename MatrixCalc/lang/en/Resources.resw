@@ -267,7 +267,13 @@
   <data name="MultiNum.Text" xml:space="preserve">
     <value>NUMBER MULTIPLICATION</value>
   </data>
+  <data name="ExpoErr" xml:space="preserve">
+    <value>Column count is not equal to row count! Can not exponentiate matrix!</value>
+  </data>
   <data name="MatrixExpoNum.Header" xml:space="preserve">
     <value>Exponation number</value>
+  </data>
+  <data name="ResMultiNum.Title" xml:space="preserve">
+    <value>Multiplied matrix Ax</value>
   </data>
 </root>

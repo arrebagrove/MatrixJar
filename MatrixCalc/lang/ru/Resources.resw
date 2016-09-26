@@ -267,7 +267,13 @@
   <data name="Transpose.Text" xml:space="preserve">
     <value>ТРАНСПОНИРОВАНИЕ</value>
   </data>
+  <data name="ExpoErr" xml:space="preserve">
+    <value>Количество строк матрицы не равно количеству столбцов! Невозможно возвести матрицу в степень!</value>
+  </data>
   <data name="MatrixExpoNum.Header" xml:space="preserve">
     <value>Степень</value>
+  </data>
+  <data name="ResMultiNum.Title" xml:space="preserve">
+    <value>Умноженная матрица Ах</value>
   </data>
 </root>

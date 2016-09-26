@@ -203,6 +203,39 @@ namespace myMatrix
         }
 
         /// <summary>
+        /// Возвращает матрицу, возведённую в степень power.
+        /// </summary>
+        /// <param name="power">Показатель степени</param>
+        /// <returns>Матрица в степени power</returns>
+        public Matrix Exponentiate(int power)
+        {
+            Matrix matrix = this;
+            for (int x = 1; x < power; x++)
+            {
+                matrix = matrix * this;
+            }
+            return matrix;
+        }
+
+        /// <summary>
+        /// Возвращает матрицу, умноженную на число.
+        /// </summary>
+        /// <param name="number">Число</param>
+        /// <returns>Матрица * число</returns>
+        public Matrix MultiplyByNumber(int number)
+        {
+            Matrix result = this;
+            for (int x = 0; x < result.GetWidth(); x++)
+            {
+                for (int y = 0; y < result.GetHeight(); y++)
+                {
+                    result[x, y] *= number;
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Рекурсивный хелпер для получения определителя матрицы.
         /// </summary>
         /// <param name="matrix">Матрица</param>

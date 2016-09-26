@@ -26,7 +26,32 @@ namespace MatrixCalc.Pages
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (App._matrix != null)
+            {
+                MatrixA.PasteButton.Visibility =
+                    MatrixA.PasteButtonSeparator.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
 
+            if (((Pivot)sender).SelectedIndex == 2)
+            {
+                try
+                {
+                    Result.commandBar.Visibility = Visibility.Visible;
+                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    int number = int.Parse(NumberMulti.Text);
+                    Result.InnerMatrix = MatrixA.InnerMatrix.MultiplyByNumber(number);
+                }
+                catch (MatrixInputInvalidException ex)
+                {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                }
+                catch (Exception ex)
+                {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+                }
+            }
         }
     }
 }
