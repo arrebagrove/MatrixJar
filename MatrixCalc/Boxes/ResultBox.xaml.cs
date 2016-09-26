@@ -45,13 +45,18 @@ namespace myMatrix
                 for (int x = 0; x < columnCount; x++)
                     MatrixOne.RowDefinitions.Add(new RowDefinition());
 
+                Windows.Storage.ApplicationDataContainer localSettings =
+                    Windows.Storage.ApplicationData.Current.LocalSettings;
+                bool isLong = (string)localSettings.Values["Format"] == "0" ? false : true;
+
                 // Fill the matrix with numbers
                 for (int x = 0; x < columnCount; x++)
                 {
                     for (int y = 0; y < rowCount; y++)
                     {
                         TextBlock textBlock = createTextBlock(x, y);
-                        textBlock.Text = ((Math.Floor(value[x, y] * 100) / 100)).ToString();
+                        textBlock.Text = ((Math.Floor(value[x, y] * (isLong ? 10000 : 100)) / 
+                            (isLong ? 10000 : 100))).ToString();
                         MatrixOne.Children.Add(textBlock);
                     }
                 }

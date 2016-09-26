@@ -1,4 +1,6 @@
-﻿using Windows.Foundation;
+﻿using MatrixCalc;
+using System;
+using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -13,6 +15,25 @@ namespace myMatrix
     {
         public MainPage()
         {
+            Windows.Storage.ApplicationDataContainer localSettings =
+                Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values["Theme"] == null) localSettings.Values["Theme"] = 0;
+            if (localSettings.Values["Format"] == null) localSettings.Values["Format"] = 0;
+
+            switch ((string)localSettings.Values["Theme"])
+            {
+                case "0":
+                    this.RequestedTheme = ElementTheme.Default;
+                    break;
+                case "1":
+                    this.RequestedTheme = ElementTheme.Dark;
+                    break;
+                case "2":
+                    this.RequestedTheme = ElementTheme.Light;
+                    break;
+            }
+
             this.InitializeComponent();
             MainFrame.Navigate(typeof(Page_Plus));
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(300, 300));
@@ -84,6 +105,11 @@ namespace myMatrix
         private void SplitView_Close(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = false;
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await (new SettingsDiag()).ShowAsync();
         }
     }
 }

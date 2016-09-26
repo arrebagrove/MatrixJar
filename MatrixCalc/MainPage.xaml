@@ -33,9 +33,10 @@
         <Button Foreground="White" Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
                 Canvas.ZIndex="3" Name="MyButton" FontSize="20" FontFamily="Segoe MDL2 Assets" 
                 Content="&#xE700;" Width="48" Height="48" Click="MyButton_Click" VerticalAlignment="Top" />
-        <Button Background="Transparent" HorizontalAlignment="Right" Width="48" Height="48" VerticalAlignment="Top" Canvas.ZIndex="3" FontSize="20">
+        <Button Background="Transparent" HorizontalAlignment="Right" Width="48" Height="48" Click="Button_Click"
+                VerticalAlignment="Top" Canvas.ZIndex="3" FontSize="20">
             <Button.Content>
-                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72D;" Foreground="White" />
+                <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE713;" Foreground="White" />
             </Button.Content>
         </Button>
         <StackPanel Grid.Row="0" Name="NavBackground" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
