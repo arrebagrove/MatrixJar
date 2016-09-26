@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -47,7 +48,7 @@ namespace myMatrix
 
                 Windows.Storage.ApplicationDataContainer localSettings =
                     Windows.Storage.ApplicationData.Current.LocalSettings;
-                bool isLong = (string)localSettings.Values["Format"] == "0" ? false : true;
+                bool isLong = (int)localSettings.Values["Format"] == 0 ? true : false;
 
                 // Fill the matrix with numbers
                 for (int x = 0; x < columnCount; x++)
@@ -93,15 +94,16 @@ namespace myMatrix
 
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
+            ResourceLoader rl = new ResourceLoader();
             AppBarButton apb = (AppBarButton)sender;
             try
             {
                 App._matrix = InnerMatrix;
-                PopFlyout("Матрица скопирована!", apb);
+                PopFlyout(rl.GetString("CopySuccess"), apb);
             }
             catch
             {
-                PopFlyout("Не удалось скопировать матрицу.", apb);
+                PopFlyout(rl.GetString("CopyFail"), apb);
             }
         }
 

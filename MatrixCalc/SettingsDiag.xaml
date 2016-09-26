@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    x:Uid="SettingsDiag"
     Title="Настройки"
     PrimaryButtonText="Сохранить"
     SecondaryButtonText="Отмена"
@@ -14,18 +15,18 @@
 
     <StackPanel>
         <StackPanel>
-            <TextBlock Margin="0 12" Text="Тема оформления" />
+            <TextBlock Margin="0 12" x:Uid="SettingsTheme" Text="Тема оформления" />
             <ComboBox Name="ThemeCombo" MinWidth="200" SelectedIndex="0">
-                <ComboBoxItem Content="Параметр системы" />
-                <ComboBoxItem Content="Тёмная" />
-                <ComboBoxItem Content="Светлая" />
+                <ComboBoxItem x:Uid="STSystem" Content="Параметр системы" />
+                <ComboBoxItem x:Uid="STDark" Content="Тёмная" />
+                <ComboBoxItem x:Uid="STLight" Content="Светлая" />
             </ComboBox>
         </StackPanel>
         <StackPanel>
-            <TextBlock Margin="0 12" Text="Формат вывода данных" />
+            <TextBlock Margin="0 12" x:Uid="SettingsFormat" Text="Формат вывода данных" />
             <ComboBox Name="FormatCombo" MinWidth="200" SelectedIndex="0">
-                <ComboBoxItem Content="Короткий" />
-                <ComboBoxItem Content="Длинный" />
+                <ComboBoxItem x:Uid="SFShort" Content="Короткий" />
+                <ComboBoxItem x:Uid="SFLong" Content="Длинный" />
             </ComboBox>
         </StackPanel>
     </StackPanel>

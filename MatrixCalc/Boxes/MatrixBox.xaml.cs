@@ -100,8 +100,60 @@ namespace myMatrix
                 Names = { new InputScopeName(InputScopeNameValue.Digits) }
             };
             textBox.BorderBrush = Resources["AppBarItemDisabledForegroundThemeBrush"] as Brush;
-            textBox.TextChanged += (sender, args) => TextBox_TextChanged(sender, args);
+            textBox.TextChanged += TextBox_TextChanged;
+            textBox.KeyDown += TextBox_KeyDown;
             return textBox;
+        }
+
+        private bool _canJump = true;
+        private async void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                if (!_canJump) return;
+                _canJump = false;
+
+                int width = MatrixOne.ColumnDefinitions.Count;
+                int height = MatrixOne.RowDefinitions.Count;
+
+                int x = (int)((TextBox)sender).GetValue(Grid.ColumnProperty);
+                int y = (int)((TextBox)sender).GetValue(Grid.RowProperty);
+
+                if (x < width)
+                {
+                    for (int i = 0; i < MatrixOne.Children.Count; i++)
+                    {
+                        TextBox textBox = (TextBox)MatrixOne.Children[i];
+                        if ((int)textBox.GetValue(Grid.RowProperty) == y &&
+                            (int)textBox.GetValue(Grid.ColumnProperty) == x + 1)
+                        {
+                            textBox.Focus(FocusState.Programmatic);
+                            await Task.Delay(100);
+                            _canJump = true;
+                            return;
+                        }
+                    }
+                }
+
+                if (y < width)
+                {
+                    for (int i = 0; i < MatrixOne.Children.Count; i++)
+                    {
+                        TextBox textBox = (TextBox)MatrixOne.Children[i];
+                        if ((int)textBox.GetValue(Grid.RowProperty) == y + 1 &&
+                            (int)textBox.GetValue(Grid.ColumnProperty) == 0)
+                        {
+                            textBox.Focus(FocusState.Programmatic);
+                            await Task.Delay(100);
+                            _canJump = true;
+                            return;
+                        }
+                    }
+                }
+
+                await Task.Delay(100);
+                _canJump = true;
+            }
         }
 
         private void TextBox_TextChanged(object sender, RoutedEventArgs e)
@@ -266,5 +318,6 @@ namespace myMatrix
                 return PasteSeparator;
             }
         }
+
     }
 }

@@ -21,7 +21,7 @@ namespace myMatrix
         public Page_Transp()
         {
             this.InitializeComponent();
-            App.ChosenIndex = 4;
+            App.ChosenIndex = 6;
         }
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)

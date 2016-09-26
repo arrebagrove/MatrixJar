@@ -23,7 +23,7 @@ namespace myMatrix
         {
             this.InitializeComponent();
             Result.commandBar.Visibility = Visibility.Collapsed;
-            App.ChosenIndex = 6;
+            App.ChosenIndex = 8;
         }
 
 

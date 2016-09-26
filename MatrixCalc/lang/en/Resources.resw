@@ -216,7 +216,58 @@
   <data name="Result.Header" xml:space="preserve">
     <value>Result</value>
   </data>
+  <data name="SettingsButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsDiag.PrimaryButtonText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SettingsDiag.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SettingsDiag.Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsFormat.Text" xml:space="preserve">
+    <value>Output format</value>
+  </data>
+  <data name="SettingsTheme.Text" xml:space="preserve">
+    <value>Application theme</value>
+  </data>
+  <data name="SFLong.Content" xml:space="preserve">
+    <value>Long</value>
+  </data>
+  <data name="SFShort.Content" xml:space="preserve">
+    <value>Short</value>
+  </data>
+  <data name="STDark.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="STLight.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="STSystem.Content" xml:space="preserve">
+    <value>System settings</value>
+  </data>
   <data name="Transpose.Text" xml:space="preserve">
     <value>TRANSPOSITION</value>
+  </data>
+  <data name="Expo.Text" xml:space="preserve">
+    <value>EXPONENTIATION</value>
+  </data>
+  <data name="MatrixNumber.Header" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="MenuExpo.Text" xml:space="preserve">
+    <value>Exponentiation</value>
+  </data>
+  <data name="MenuMultiNum.Text" xml:space="preserve">
+    <value>Number multiplication</value>
+  </data>
+  <data name="MultiNum.Text" xml:space="preserve">
+    <value>NUMBER MULTIPLICATION</value>
+  </data>
+  <data name="MatrixExpoNum.Header" xml:space="preserve">
+    <value>Exponation number</value>
   </data>
 </root>

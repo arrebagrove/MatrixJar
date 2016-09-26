@@ -22,7 +22,7 @@ namespace myMatrix
         public Page_Reverse()
         {
             this.InitializeComponent();
-            App.ChosenIndex = 5;
+            App.ChosenIndex = 7;
         }
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)

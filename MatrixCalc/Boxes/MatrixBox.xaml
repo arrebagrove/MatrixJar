@@ -49,7 +49,7 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBox TextChanged="TextBox_TextChanged"
+                        <TextBox TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown"
                          Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }" 
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
                             <TextBox.Transitions>
@@ -58,7 +58,7 @@
                                 </TransitionCollection>
                             </TextBox.Transitions>
                         </TextBox>
-                        <TextBox TextChanged="TextBox_TextChanged"
+                        <TextBox TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown"
                     Grid.Row="0" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
                             <TextBox.Transitions>
@@ -67,7 +67,7 @@
                                 </TransitionCollection>
                             </TextBox.Transitions>
                         </TextBox>
-                        <TextBox TextChanged="TextBox_TextChanged"
+                        <TextBox TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown"
                     Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="0" Margin="3" MinWidth="0" InputScope="Digits">
                             <TextBox.Transitions>
@@ -76,7 +76,7 @@
                                 </TransitionCollection>
                             </TextBox.Transitions>
                         </TextBox>
-                        <TextBox TextChanged="TextBox_TextChanged"
+                        <TextBox TextChanged="TextBox_TextChanged" KeyDown="TextBox_KeyDown"
                     Grid.Row="1" BorderBrush="{ThemeResource AppBarItemDisabledForegroundThemeBrush }"
                          Grid.Column="1" Margin="3" MinWidth="0" InputScope="Digits">
                             <TextBox.Transitions>

@@ -1,4 +1,5 @@
 ﻿using MatrixCalc;
+using MatrixCalc.Pages;
 using System;
 using Windows.Foundation;
 using Windows.UI.Core;
@@ -21,15 +22,15 @@ namespace myMatrix
             if (localSettings.Values["Theme"] == null) localSettings.Values["Theme"] = 0;
             if (localSettings.Values["Format"] == null) localSettings.Values["Format"] = 0;
 
-            switch ((string)localSettings.Values["Theme"])
+            switch ((int)localSettings.Values["Theme"])
             {
-                case "0":
+                case 0:
                     this.RequestedTheme = ElementTheme.Default;
                     break;
-                case "1":
+                case 1:
                     this.RequestedTheme = ElementTheme.Dark;
                     break;
-                case "2":
+                case 2:
                     this.RequestedTheme = ElementTheme.Light;
                     break;
             }
@@ -78,12 +79,18 @@ namespace myMatrix
                     MainFrame.Navigate(typeof(Page_Multi));
                     break;
                 case 4:
-                    MainFrame.Navigate(typeof(Page_Transp));
+                    MainFrame.Navigate(typeof(Page_MultiNum));
                     break;
                 case 5:
-                    MainFrame.Navigate(typeof(Page_Reverse));
+                    MainFrame.Navigate(typeof(Page_Expo));
                     break;
                 case 6:
+                    MainFrame.Navigate(typeof(Page_Transp));
+                    break;
+                case 7:
+                    MainFrame.Navigate(typeof(Page_Reverse));
+                    break;
+                case 8:
                     MainFrame.Navigate(typeof(Page_Determinant));
                     break;
             }

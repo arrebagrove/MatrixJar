@@ -6,41 +6,19 @@ namespace MatrixCalc
     {
         public SettingsDiag()
         {
+            this.InitializeComponent();
             Windows.Storage.ApplicationDataContainer localSettings =
                 Windows.Storage.ApplicationData.Current.LocalSettings;
-
-            switch ((string)localSettings.Values["Theme"])
-            {
-                case "0":
-                    ThemeCombo.SelectedIndex = 0;
-                    break;
-                case "1":
-                    ThemeCombo.SelectedIndex = 1;
-                    break;
-                case "2":
-                    ThemeCombo.SelectedIndex = 1;
-                    break;
-            }
-
-            switch ((string)localSettings.Values["Format"])
-            {
-                case "0":
-                    FormatCombo.SelectedIndex = 0;
-                    break;
-                case "1":
-                    FormatCombo.SelectedIndex = 1;
-                    break;
-            }
-
-            this.InitializeComponent();
+            ThemeCombo.SelectedIndex = (int)localSettings.Values["Theme"];
+            FormatCombo.SelectedIndex = (int)localSettings.Values["Format"];
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             Windows.Storage.ApplicationDataContainer localSettings =
                 Windows.Storage.ApplicationData.Current.LocalSettings;
-            localSettings.Values["Theme"] = ThemeCombo.SelectedIndex.ToString();
-            localSettings.Values["Format"] = ThemeCombo.SelectedIndex.ToString();
+            localSettings.Values["Theme"] = ThemeCombo.SelectedIndex;
+            localSettings.Values["Format"] = FormatCombo.SelectedIndex;
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

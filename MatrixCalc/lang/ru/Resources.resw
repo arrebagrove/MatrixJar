@@ -147,6 +147,9 @@
   <data name="ErrorOperation.Text" xml:space="preserve">
     <value>Ошибка выполнения</value>
   </data>
+  <data name="Expo.Text" xml:space="preserve">
+    <value>ВОЗВЕДЕНИЕ В СТЕПЕНЬ</value>
+  </data>
   <data name="FillMatrix" xml:space="preserve">
     <value>Заполните матрицу {0}!</value>
   </data>
@@ -159,8 +162,14 @@
   <data name="MatrixB.Header" xml:space="preserve">
     <value>Матрица B</value>
   </data>
+  <data name="MatrixNumber.Header" xml:space="preserve">
+    <value>Число</value>
+  </data>
   <data name="MenuDet.Text" xml:space="preserve">
     <value>Определитель</value>
+  </data>
+  <data name="MenuExpo.Text" xml:space="preserve">
+    <value>Возведение в степень</value>
   </data>
   <data name="MenuInverse.Text" xml:space="preserve">
     <value>Обратная матрица</value>
@@ -170,6 +179,9 @@
   </data>
   <data name="MenuMulti.Text" xml:space="preserve">
     <value>Умножение</value>
+  </data>
+  <data name="MenuMultiNum.Text" xml:space="preserve">
+    <value>Умножение на число</value>
   </data>
   <data name="MenuPlus.Text" xml:space="preserve">
     <value>Сложение</value>
@@ -185,6 +197,9 @@
   </data>
   <data name="MultiErr" xml:space="preserve">
     <value>Количество столбцов матрицы А не равно количеству строк матрицы В. Операция умножения возможна только в том случае, если это условие выполнено!</value>
+  </data>
+  <data name="MultiNum.Text" xml:space="preserve">
+    <value>УМНОЖЕНИЕ НА ЧИСЛО</value>
   </data>
   <data name="Paste.Label" xml:space="preserve">
     <value>Загрузить матрицу</value>
@@ -216,7 +231,43 @@
   <data name="Result.Header" xml:space="preserve">
     <value>Результат</value>
   </data>
+  <data name="SettingsButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SettingsDiag.PrimaryButtonText" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="SettingsDiag.SecondaryButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="SettingsDiag.Title" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SettingsFormat.Text" xml:space="preserve">
+    <value>Формат вывода</value>
+  </data>
+  <data name="SettingsTheme.Text" xml:space="preserve">
+    <value>Тема оформления</value>
+  </data>
+  <data name="SFLong.Content" xml:space="preserve">
+    <value>Длинный</value>
+  </data>
+  <data name="SFShort.Content" xml:space="preserve">
+    <value>Короткий</value>
+  </data>
+  <data name="STDark.Content" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="STLight.Content" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="STSystem.Content" xml:space="preserve">
+    <value>Параметр системы</value>
+  </data>
   <data name="Transpose.Text" xml:space="preserve">
     <value>ТРАНСПОНИРОВАНИЕ</value>
+  </data>
+  <data name="MatrixExpoNum.Header" xml:space="preserve">
+    <value>Степень</value>
   </data>
 </root>
