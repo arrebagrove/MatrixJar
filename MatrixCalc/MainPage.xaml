@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="myMatrix.MainPage"
+    x:Class="MatrixJar.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:myMatrix"
+    xmlns:local="using:MatrixJar"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -46,7 +46,7 @@
                          SelectionMode="Single" Name="HamburgerListBox" SelectionChanged="HamburgerListBox_SelectionChanged">
                     <ListBoxItem Background="{ThemeResource SystemControlBackgroundAccentBrush}" Name="UnusedItem" Height="48" Padding="0" IsEnabled="False">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <TextBlock Name="Unutext" Visibility="Visible" Text="MYMATRIX" Foreground="White" FontWeight="Bold" Margin="60,0,0,0" VerticalAlignment="Center" />
+                            <TextBlock Name="Unutext" Visibility="Visible" Text="MATRIXJAR" Foreground="White" FontWeight="Bold" Margin="60,0,0,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="PlusItem" Height="48">

@@ -1,6 +1,4 @@
-﻿using MatrixCalc;
-using MatrixCalc.Pages;
-using System;
+﻿using System;
 using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
@@ -10,7 +8,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace myMatrix
+namespace MatrixJar
 {
     public sealed partial class MainPage : Page
     {

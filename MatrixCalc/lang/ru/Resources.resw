@@ -276,4 +276,7 @@
   <data name="ResMultiNum.Title" xml:space="preserve">
     <value>Умноженная матрица Ах</value>
   </data>
+  <data name="ResExpo.Title" xml:space="preserve">
+    <value>Возведённая в степень матрица А</value>
+  </data>
 </root>

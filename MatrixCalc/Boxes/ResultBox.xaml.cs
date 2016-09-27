@@ -5,7 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace myMatrix
+namespace MatrixJar
 {
     public sealed partial class ResultBox : UserControl
     {

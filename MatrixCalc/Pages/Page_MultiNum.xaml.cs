@@ -1,4 +1,4 @@
-﻿using myMatrix;
+﻿using MatrixJar;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MatrixCalc.Pages
+namespace MatrixJar
 {
     public sealed partial class Page_MultiNum : Page
     {
@@ -39,7 +39,17 @@ namespace MatrixCalc.Pages
                     Result.commandBar.Visibility = Visibility.Visible;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    int number = int.Parse(NumberMulti.Text);
+
+                    int number;
+                    try
+                    {
+                        number = int.Parse(NumberMulti.Text);
+                    }
+                    catch
+                    {
+                        throw new MatrixInputInvalidException();
+                    }
+
                     Result.InnerMatrix = MatrixA.InnerMatrix.MultiplyByNumber(number);
                 }
                 catch (MatrixInputInvalidException ex)
@@ -50,6 +60,25 @@ namespace MatrixCalc.Pages
                 catch (Exception ex)
                 {
                     Result.commandBar.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void NumberMulti_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            try
+            {
+                int.Parse(textBox.Text.Replace('.', ','));
+                textBox.BorderBrush = Resources["SystemControlHighlightAccentBrush"] as Brush;
+            }
+            catch
+            {
+                textBox.BorderBrush = Resources["AppBarItemDisabledForegroundThemeBrush"] as Brush;
+                if (!string.IsNullOrEmpty(textBox.Text))
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+                    textBox.SelectionStart = textBox.Text.Length;
                 }
             }
         }

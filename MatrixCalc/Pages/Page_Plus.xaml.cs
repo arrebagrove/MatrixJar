@@ -3,7 +3,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 
-namespace myMatrix
+namespace MatrixJar
 {
     public sealed partial class Page_Plus : Page
     {

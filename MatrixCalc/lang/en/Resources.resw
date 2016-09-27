@@ -276,4 +276,7 @@
   <data name="ResMultiNum.Title" xml:space="preserve">
     <value>Multiplied matrix Ax</value>
   </data>
+  <data name="ResExpo.Title" xml:space="preserve">
+    <value>Exponentiated matrix A</value>
+  </data>
 </root>

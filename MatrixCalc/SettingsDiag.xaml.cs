@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-namespace MatrixCalc
+namespace MatrixJar
 {
     public sealed partial class SettingsDiag : ContentDialog
     {

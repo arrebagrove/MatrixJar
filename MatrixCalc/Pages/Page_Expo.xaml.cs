@@ -1,4 +1,4 @@
-﻿using myMatrix;
+﻿using MatrixJar;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MatrixCalc.Pages
+namespace MatrixJar
 {
     public sealed partial class Page_Expo : Page
     {
@@ -41,7 +41,17 @@ namespace MatrixCalc.Pages
                     Result.commandBar.Visibility = Visibility.Visible;
                     Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    int expo = int.Parse(ExpoNum.Text);
+
+                    int expo;
+                    try
+                    {
+                        expo = int.Parse(ExpoNum.Text);
+                    }
+                    catch
+                    {
+                        throw new MatrixInputInvalidException();
+                    }
+
                     Result.InnerMatrix = MatrixA.InnerMatrix.Exponentiate(expo);
                 }
                 catch (MatrixInputInvalidException ex)
@@ -59,6 +69,27 @@ namespace MatrixCalc.Pages
                 catch (Exception ex)
                 {
                     Result.commandBar.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void ExpoNum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            try
+            {
+                int exp = int.Parse(textBox.Text);
+                if (exp > 100)
+                    throw new Exception();
+                textBox.BorderBrush = Resources["SystemControlHighlightAccentBrush"] as Brush;
+            }
+            catch
+            {
+                textBox.BorderBrush = Resources["AppBarItemDisabledForegroundThemeBrush"] as Brush;
+                if (!string.IsNullOrEmpty(textBox.Text))
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+                    textBox.SelectionStart = textBox.Text.Length;
                 }
             }
         }

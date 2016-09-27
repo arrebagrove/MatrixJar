@@ -4,7 +4,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 
-namespace myMatrix
+namespace MatrixJar
 {
     public sealed partial class Page_Minus : Page
     {

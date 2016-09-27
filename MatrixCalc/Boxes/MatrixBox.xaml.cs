@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace myMatrix
+namespace MatrixJar
 {
     public sealed partial class MatrixBox : UserControl
     {

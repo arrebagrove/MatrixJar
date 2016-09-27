@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.UI.Popups;
 
-namespace myMatrix
+namespace MatrixJar
 {
     /// <summary>
     /// Представляет класс матриц, используемых 
