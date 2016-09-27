@@ -9,7 +9,7 @@ namespace MatrixJar
             this.InitializeComponent();
             Windows.Storage.ApplicationDataContainer localSettings =
                 Windows.Storage.ApplicationData.Current.LocalSettings;
-            ThemeCombo.SelectedIndex = (int)localSettings.Values["Theme"];
+            //ThemeCombo.SelectedIndex = (int)localSettings.Values["Theme"];
             FormatCombo.SelectedIndex = (int)localSettings.Values["Format"];
         }
 
@@ -17,7 +17,7 @@ namespace MatrixJar
         {
             Windows.Storage.ApplicationDataContainer localSettings =
                 Windows.Storage.ApplicationData.Current.LocalSettings;
-            localSettings.Values["Theme"] = ThemeCombo.SelectedIndex;
+            //localSettings.Values["Theme"] = ThemeCombo.SelectedIndex;
             localSettings.Values["Format"] = FormatCombo.SelectedIndex;
         }
 

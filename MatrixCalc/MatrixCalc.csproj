@@ -7,8 +7,8 @@
     <ProjectGuid>{EBB4E2A3-D132-44DA-84CE-F6AB76435F51}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MatrixCalc</RootNamespace>
-    <AssemblyName>MatrixCalc</AssemblyName>
+    <RootNamespace>MatrixJar</RootNamespace>
+    <AssemblyName>MatrixJar</AssemblyName>
     <DefaultLanguage>en</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>

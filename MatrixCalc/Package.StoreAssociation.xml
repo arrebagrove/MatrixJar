@@ -360,11 +360,11 @@
   <ProductReservedInfo>
     <MainPackageIdentityName>58363.myMatrix</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>myMatrix</ReservedName>
+      <ReservedName>MatrixJar</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
-    <MainPackageIdentityName>58363.myFeed</MainPackageIdentityName>
+    <MainPackageIdentityName>58363.myMatrix</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NBLGGH530BD" />
 </StoreAssociation>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Windows.Foundation;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -16,9 +17,11 @@ namespace MatrixJar
         {
             Windows.Storage.ApplicationDataContainer localSettings =
                 Windows.Storage.ApplicationData.Current.LocalSettings;
-
-            if (localSettings.Values["Theme"] == null) localSettings.Values["Theme"] = 0;
             if (localSettings.Values["Format"] == null) localSettings.Values["Format"] = 0;
+
+            /*
+            if (localSettings.Values["Theme"] == null) localSettings.Values["Theme"] = 0;
+            
 
             switch ((int)localSettings.Values["Theme"])
             {
@@ -31,7 +34,7 @@ namespace MatrixJar
                 case 2:
                     this.RequestedTheme = ElementTheme.Light;
                     break;
-            }
+            }*/
 
             this.InitializeComponent();
             MainFrame.Navigate(typeof(Page_Plus));
@@ -45,6 +48,7 @@ namespace MatrixJar
                 StatusBar statusBar = StatusBar.GetForCurrentView();
                 SolidColorBrush statuscolor = NavBackground.Background as SolidColorBrush;
                 statusBar.BackgroundColor = statuscolor.Color;
+                statusBar.ForegroundColor = Colors.White;
                 statusBar.BackgroundOpacity = 1;
             }
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;

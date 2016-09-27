@@ -86,22 +86,6 @@
                                       X1="10" Y1="12" StrokeThickness="1"
                                       Y2="7" X2="15"
                                       />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="0" Y1="2" StrokeThickness="1"
-                                      X2="10" Y2="12"
-                                    />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="0" Y1="12" StrokeThickness="1"
-                                      Y2="2" X2="10"
-                                      />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="10" Y1="7" StrokeThickness="1"
-                                      X2="15" Y2="12"
-                                    />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="10" Y1="12" StrokeThickness="1"
-                                      Y2="7" X2="15"
-                                      />
                             </Grid>
                             <TextBlock x:Uid="MenuMultiNum" Text="Умножение на число" Margin="27,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
@@ -115,14 +99,6 @@
                     <ListBoxItem Name="TranspItem" Height="48">
                         <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
                             <Grid Width="15" Height="15">
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="0" Y1="1" StrokeThickness="1"
-                                      X2="19" Y2="1"
-                                    />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="7.5" Y1="1" StrokeThickness="1"
-                                      Y2="20" X2="7.5"
-                                      />
                                 <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
                                       X1="0" Y1="1" StrokeThickness="1"
                                       X2="19" Y2="1"
@@ -146,14 +122,6 @@
                                       X1="12.5" Y1="0" StrokeThickness="1"
                                       X2="12.5" Y2="15"
                                       />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="0" Y1="7" StrokeThickness="1"
-                                      X2="7" Y2="7"
-                                      />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                      X1="12.5" Y1="0" StrokeThickness="1"
-                                      X2="12.5" Y2="15"
-                                      />
                             </Grid>
                             <TextBlock x:Uid="MenuInverse" Text="Обратная матрица" Margin="29,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
@@ -161,18 +129,6 @@
                     <ListBoxItem Name="DeterminantItem" Height="48">
                         <StackPanel Orientation="Horizontal" Margin="2,0,0,0">
                             <Grid Width="15" Height="15">
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                          X1="1" Y1="14" StrokeEndLineCap="Round"
-                                          X2="14" Y2="14" StrokeThickness="1"
-                                          />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                          X1="14" Y2="1" StrokeEndLineCap="Round"
-                                          X2="7.5" Y1="14" StrokeThickness="1"
-                                          />
-                                <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
-                                          X1="1" Y2="1" StrokeEndLineCap="Round"
-                                          X2="7.5" Y1="14" StrokeThickness="1"
-                                          />
                                 <Line Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
                                           X1="1" Y1="14" StrokeEndLineCap="Round"
                                           X2="14" Y2="14" StrokeThickness="1"

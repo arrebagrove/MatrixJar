@@ -48,7 +48,7 @@ namespace MatrixJar
 
                 Windows.Storage.ApplicationDataContainer localSettings =
                     Windows.Storage.ApplicationData.Current.LocalSettings;
-                bool isLong = (int)localSettings.Values["Format"] == 0 ? true : false;
+                bool isLong = (int)localSettings.Values["Format"] == 0 ? false : true;
 
                 // Fill the matrix with numbers
                 for (int x = 0; x < columnCount; x++)
