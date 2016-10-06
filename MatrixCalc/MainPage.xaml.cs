@@ -19,23 +19,6 @@ namespace MatrixJar
                 Windows.Storage.ApplicationData.Current.LocalSettings;
             if (localSettings.Values["Format"] == null) localSettings.Values["Format"] = 0;
 
-            /*
-            if (localSettings.Values["Theme"] == null) localSettings.Values["Theme"] = 0;
-            
-
-            switch ((int)localSettings.Values["Theme"])
-            {
-                case 0:
-                    this.RequestedTheme = ElementTheme.Default;
-                    break;
-                case 1:
-                    this.RequestedTheme = ElementTheme.Dark;
-                    break;
-                case 2:
-                    this.RequestedTheme = ElementTheme.Light;
-                    break;
-            }*/
-
             this.InitializeComponent();
             MainFrame.Navigate(typeof(Page_Plus));
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(300, 300));

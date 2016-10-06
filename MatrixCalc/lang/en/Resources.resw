@@ -226,7 +226,7 @@
     <value>Cancel</value>
   </data>
   <data name="SettingsDiag.Title" xml:space="preserve">
-    <value>Settings</value>
+    <value>About</value>
   </data>
   <data name="SettingsFormat.Text" xml:space="preserve">
     <value>Output format</value>
@@ -278,5 +278,14 @@
   </data>
   <data name="ResExpo.Title" xml:space="preserve">
     <value>Exponentiated matrix A</value>
+  </data>
+  <data name="SDFeedback.Content" xml:space="preserve">
+    <value>Rate the App</value>
+  </data>
+  <data name="SDMail.Content" xml:space="preserve">
+    <value>Report an issue</value>
+  </data>
+  <data name="SDSettings.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

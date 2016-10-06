@@ -42,8 +42,8 @@
         <StackPanel Grid.Row="0" Name="NavBackground" Background="{ThemeResource SystemControlBackgroundAccentBrush}"/>
         <SplitView Grid.Row="0" Grid.RowSpan="2" x:Name="MySplitView" DisplayMode="Overlay" OpenPaneLength="250">
             <SplitView.Pane>
-                <ListBox ManipulationCompleted="SplitView_Close" ScrollViewer.VerticalScrollMode="Disabled" Background="{ThemeResource SystemChromeLowColor}" 
-                         SelectionMode="Single" Name="HamburgerListBox" SelectionChanged="HamburgerListBox_SelectionChanged">
+                <ListBox ManipulationCompleted="SplitView_Close" Canvas.ZIndex="3" ScrollViewer.VerticalScrollMode="Disabled" Background="{ThemeResource SystemChromeLowColor}" 
+                         SelectionMode="Single" Name="HamburgerListBox" SelectionChanged="HamburgerListBox_SelectionChanged" ManipulationMode="TranslateX">
                     <ListBoxItem Background="{ThemeResource SystemControlBackgroundAccentBrush}" Name="UnusedItem" Height="48" Padding="0" IsEnabled="False">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                             <TextBlock Name="Unutext" Visibility="Visible" Text="MATRIXJAR" Foreground="White" FontWeight="Bold" Margin="60,0,0,0" VerticalAlignment="Center" />

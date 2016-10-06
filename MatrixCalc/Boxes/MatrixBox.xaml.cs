@@ -159,6 +159,9 @@ namespace MatrixJar
         private void TextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
+
+            if (textBox.Text.Equals("-")) return; //minus is normal, don't cancel
+
             try
             {
                 double.Parse(textBox.Text.Replace('.', ','));

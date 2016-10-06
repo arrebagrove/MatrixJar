@@ -7,22 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Uid="SettingsDiag"
-    Title="Настройки"
+    Title="О приложении"
     PrimaryButtonText="Сохранить"
     SecondaryButtonText="Отмена"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <StackPanel>
-        <!--<StackPanel>
-            <TextBlock Margin="0 12" x:Uid="SettingsTheme" Text="Тема оформления" />
-            <ComboBox Name="ThemeCombo" MinWidth="200" SelectedIndex="0">
-                <ComboBoxItem x:Uid="STSystem" Content="Параметр системы" />
-                <ComboBoxItem x:Uid="STDark" Content="Тёмная" />
-                <ComboBoxItem x:Uid="STLight" Content="Светлая" />
-            </ComboBox>
-        </StackPanel>-->
         <StackPanel>
+            <TextBlock Margin="0 12 0 6" Text="MatrixJar" TextWrapping="Wrap" />
+            <TextBlock Text="Copyright © Artjom Graf 2016" />
+            <Button Name="WebSiteBtn"  Margin="0 6" Style="{StaticResource TextBlockButtonStyle}" 
+                    Padding="0" Content="worldbeater.github.io" Click="WebSiteBtn_Click" />
+            <Button Name="MailMeBtn"   Margin="0 6" Content="Сообщить о проблеме"
+                    Click="MailMeBtn_Click" x:Uid="SDMail" />
+            <Button Name="FeedbackBtn" Margin="0 6" Content="Оставить отзыв" 
+                    Click="FeedbackBtn_Click" x:Uid="SDFeedback"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Margin="0 24 0 0" FontWeight="Normal" FontSize="20"
+                       Text="Настройки" x:Uid="SDSettings" />
             <TextBlock Margin="0 12" x:Uid="SettingsFormat" Text="Формат вывода данных" />
             <ComboBox Name="FormatCombo" MinWidth="200" SelectedIndex="0">
                 <ComboBoxItem x:Uid="SFShort" Content="Короткий" />
