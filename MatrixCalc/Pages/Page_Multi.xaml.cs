@@ -21,6 +21,9 @@ namespace MatrixJar
         public Page_Multi()
         {
             this.InitializeComponent();
+            MatrixA._pivotToNavigate = MainPivot;
+            MatrixB._pivotToNavigate = MainPivot;
+            Result._pivotToNavigate = MainPivot;
             App.ChosenIndex = 3;
         }
 

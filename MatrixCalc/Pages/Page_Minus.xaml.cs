@@ -11,6 +11,9 @@ namespace MatrixJar
         public Page_Minus()
         {
             this.InitializeComponent();
+            MatrixA._pivotToNavigate = MainPivot;
+            MatrixB._pivotToNavigate = MainPivot;
+            Result._pivotToNavigate = MainPivot;
             App.ChosenIndex = 2;
         }
 

@@ -22,6 +22,8 @@ namespace MatrixJar
         public Page_Reverse()
         {
             this.InitializeComponent();
+            MatrixA._pivotToNavigate = MainPivot;
+            Result._pivotToNavigate = MainPivot;
             App.ChosenIndex = 7;
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,6 +24,8 @@ namespace MatrixJar
         public Page_Expo()
         {
             this.InitializeComponent();
+            MatrixA._pivotToNavigate = MainPivot;
+            Result._pivotToNavigate = MainPivot;
             App.ChosenIndex = 5;
         }
 
@@ -82,9 +85,11 @@ namespace MatrixJar
                 if (exp > 100)
                     throw new Exception();
                 textBox.BorderBrush = Resources["SystemControlHighlightAccentBrush"] as Brush;
+                GoForward.IsEnabled = true;
             }
             catch
             {
+                GoForward.IsEnabled = false;
                 textBox.BorderBrush = Resources["AppBarItemDisabledForegroundThemeBrush"] as Brush;
                 if (!string.IsNullOrEmpty(textBox.Text))
                 {
@@ -92,6 +97,11 @@ namespace MatrixJar
                     textBox.SelectionStart = textBox.Text.Length;
                 }
             }
+        }
+
+        private void GoForward_Click(object sender, RoutedEventArgs e)
+        {
+            MainPivot.SelectedIndex += 1;
         }
     }
 }

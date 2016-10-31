@@ -288,4 +288,22 @@
   <data name="SDSettings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="RichAbout.Text" xml:space="preserve">
+    <value>MatrixJar is an UWP matrix calculator. You can learn more about matrices here:</value>
+  </data>
+  <data name="RichAboutUriText.Text" xml:space="preserve">
+    <value>Matrix (mathematics)</value>
+  </data>
+  <data name="RichAboutUriUri.NavigateUri" xml:space="preserve">
+    <value>https://en.wikipedia.org/wiki/Matrix_(mathematics)</value>
+  </data>
+  <data name="GoToStart.Content" xml:space="preserve">
+    <value>Go to the beginning</value>
+  </data>
+  <data name="NextStep.Content" xml:space="preserve">
+    <value>Next step</value>
+  </data>
+  <data name="NextStepHint.Text" xml:space="preserve">
+    <value>And go to the next step.</value>
+  </data>
 </root>

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
+    d:DesignHeight="600"
     d:DesignWidth="400">
 
     <UserControl.Resources>
@@ -138,9 +138,11 @@
                     </Grid.Transitions>
                     <StackPanel>
                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE765;" FontSize="80"
-                           HorizontalAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
+                           HorizontalAlignment="Center" Margin="0 -12 -6 -18" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
                         <TextBlock Name="FillMatrix" FontWeight="SemiLight" FontSize="21"
-                           TextWrapping="Wrap" TextAlignment="Center" Margin="12,6" />
+                           TextWrapping="Wrap" TextAlignment="Center" Margin="3" Text="Заполните матрицу!" />
+                        <TextBlock x:Uid="NextStepHint" Text="И перейдите к следующему шагу." HorizontalAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" />
+                        <Button x:Uid="NextStep" Foreground="White" IsEnabled="False" Name="GoForward" Content="Следующий шаг" Margin="9" HorizontalAlignment="Center" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Click="GoForward_Click" />
                     </StackPanel>
                 </Grid>
             </Grid>

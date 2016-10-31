@@ -22,10 +22,11 @@ namespace MatrixJar
         public Page_Determinant()
         {
             this.InitializeComponent();
+            MatrixA._pivotToNavigate = MainPivot;
+            Result._pivotToNavigate = MainPivot;
             Result.commandBar.Visibility = Visibility.Collapsed;
             App.ChosenIndex = 8;
         }
-
 
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

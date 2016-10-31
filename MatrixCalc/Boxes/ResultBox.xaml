@@ -32,12 +32,14 @@
                             </Grid>
                         </StackPanel>
                     </Border>
+                    <Button HorizontalAlignment="Center" x:Uid="GoToStart" Content="В начало" Margin="6 12" Click="Button_Click" />
                 </StackPanel>
-                <Grid Name="ErrorInputP" Visibility="Collapsed" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid Name="ErrorInputP" Visibility="Visible" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-50,0,0">
                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" FontSize="50" TextAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
                         <TextBlock x:Uid="ErrorInput" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
                         <TextBlock x:Uid="ErrorInputHelper" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
+                        <Button HorizontalAlignment="Center" x:Uid="GoToStart" Content="В начало" Margin="6 12" Click="Button_Click" />
                     </StackPanel>
                 </Grid>
                 <Grid Name="ErrorSizeP" Visibility="Collapsed" Margin="12" Canvas.ZIndex="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -45,6 +47,7 @@
                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" FontSize="50" TextAlignment="Center" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
                         <TextBlock x:Uid="ErrorOperation" TextAlignment="Center" FontSize="24" FontWeight="SemiLight" TextWrapping="Wrap" Margin="12,6"/>
                         <TextBlock Name="SizeExceptionText" TextWrapping="Wrap" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" TextAlignment="Center" FontSize="17" />
+                        <Button HorizontalAlignment="Center" x:Uid="GoToStart" Content="В начало" Margin="6 12" Click="Button_Click" />
                     </StackPanel>
                 </Grid>
             </Grid>

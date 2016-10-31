@@ -288,4 +288,22 @@
   <data name="SDSettings.Text" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="RichAbout.Text" xml:space="preserve">
+    <value>MatrixJar - это матричный калькулятор для Windows 10. Узнать больше о математических матрицах можно здесь:</value>
+  </data>
+  <data name="RichAboutUriText.Text" xml:space="preserve">
+    <value>Матрица (математика)</value>
+  </data>
+  <data name="RichAboutUriUri.NavigateUri" xml:space="preserve">
+    <value>https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%82%D1%80%D0%B8%D1%86%D0%B0_(%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0)</value>
+  </data>
+  <data name="GoToStart.Content" xml:space="preserve">
+    <value>Вернуться в начало</value>
+  </data>
+  <data name="NextStep.Content" xml:space="preserve">
+    <value>Следующий шаг</value>
+  </data>
+  <data name="NextStepHint.Text" xml:space="preserve">
+    <value>И перейдите к следующему шагу.</value>
+  </data>
 </root>

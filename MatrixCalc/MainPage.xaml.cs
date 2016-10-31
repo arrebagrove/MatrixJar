@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI;
 using Windows.UI.Core;
@@ -7,12 +8,15 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace MatrixJar
 {
     public sealed partial class MainPage : Page
     {
+        private bool _manipulationsEnabled = true;
+
         public MainPage()
         {
             Windows.Storage.ApplicationDataContainer localSettings =
@@ -29,17 +33,35 @@ namespace MatrixJar
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 StatusBar statusBar = StatusBar.GetForCurrentView();
-                SolidColorBrush statuscolor = NavBackground.Background as SolidColorBrush;
-                statusBar.BackgroundColor = statuscolor.Color;
+                statusBar.BackgroundColor = (Color)Application.Current.Resources["SystemAccentColor"];
                 statusBar.ForegroundColor = Colors.White;
-                statusBar.BackgroundOpacity = 1;
+                statusBar.BackgroundOpacity = 0.85;
             }
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            //PC customization
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    titleBar.BackgroundColor = titleBar.ButtonBackgroundColor = 
+                        (Color)Application.Current.Resources["SystemAccentColor"];
+                    titleBar.ForegroundColor = Colors.White;
+                }
+            }
+
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
             {
-                if (MainFrame.CanGoBack)
+                if (SplitviewLayer.Width > 0)
+                {
+                    ClosePane();
+                    a.Handled = true;
+                }
+                else if (MainFrame.CanGoBack)
                 {
                     MainFrame.GoBack();
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = 
+                        MainFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;    
                     a.Handled = true;
                 }
             };
@@ -47,10 +69,10 @@ namespace MatrixJar
 
         private void MyButton_Click(object sender, RoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            if (SplitviewLayer.Width > 0) ClosePane(); else OpenPane();
         }
 
-        private void HamburgerListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void HamburgerListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (HamburgerListBox.SelectedIndex)
             {
@@ -79,24 +101,120 @@ namespace MatrixJar
                     MainFrame.Navigate(typeof(Page_Determinant));
                     break;
             }
-            
-            if (MySplitView.DisplayMode != SplitViewDisplayMode.CompactInline)
-                MySplitView.IsPaneOpen = false;
+
+            await Task.Delay(150);
+            ClosePane();
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {
             HamburgerListBox.SelectedIndex = App.ChosenIndex;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                MainFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
         }
 
-        private void SplitView_Open(object sender, ManipulationCompletedRoutedEventArgs e)
+        private void SplitviewLayer_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = true;
+            double dx = e.Delta.Translation.X;
+            if (SplitviewLayer.Width + dx < 270 && SplitviewLayer.Width + dx > 0)
+            {
+                SplitviewLayer.Width += dx;
+            }
         }
 
-        private void SplitView_Close(object sender, ManipulationCompletedRoutedEventArgs e)
+        private async void SplitviewLayer_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = false;
+            HamburgerListBox.IsEnabled = false;
+            double v = e.Velocities.Linear.X;
+            if (v < 0)
+            {
+                ClosePane();
+                await Task.Delay(200);
+            }
+            else if (v >= 0)
+            {
+                OpenPane();
+                await Task.Delay(200);
+            }
+            HamburgerListBox.IsEnabled = true;
+        }
+
+        private void LayoutController_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            if (!_manipulationsEnabled) return;
+            SplitviewLayer.Width = LayoutController.Width;
+        }
+
+        private async void LayoutController_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (!_manipulationsEnabled) return;
+            double v = e.Velocities.Linear.X;
+            if (v < 0)
+            {
+                ClosePane();
+                await Task.Delay(200);
+            }
+            else if (v >= 0)
+            {
+                OpenPane();
+                await Task.Delay(200);
+            }
+        }
+
+        private void LayoutController_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        {
+            if (!_manipulationsEnabled) return;
+            double dx = e.Delta.Translation.X;
+            if (SplitviewLayer.Width + dx <= 270 &&
+                SplitviewLayer.Width + dx >= 0 &&
+                LayoutController.Width + dx < 270)
+            {
+                LayoutController.Width += dx;
+                SplitviewLayer.Width += dx;
+            }
+        }
+
+        private void LayoutController_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ClosePane();
+        }
+
+        private void OpenPane()
+        {
+            _manipulationsEnabled = false;
+            LayoutController.Width = double.NaN;
+            LayoutController.HorizontalAlignment = HorizontalAlignment.Stretch;
+            DoubleAnimation line = new DoubleAnimation()
+            {
+                From = SplitviewLayer.Width,
+                To = 270,
+                Duration = TimeSpan.FromMilliseconds(200),
+                EnableDependentAnimation = true
+            };
+            Storyboard.SetTarget(line, SplitviewLayer);
+            Storyboard.SetTargetProperty(line, "Width");
+            Storyboard openpane = new Storyboard();
+            openpane.Children.Add(line);
+            openpane.Begin();
+        }
+
+        private void ClosePane()
+        {
+            _manipulationsEnabled = true;
+            LayoutController.HorizontalAlignment = HorizontalAlignment.Left;
+            LayoutController.Width = 12;
+            DoubleAnimation line = new DoubleAnimation()
+            {
+                From = SplitviewLayer.Width,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(200),
+                EnableDependentAnimation = true
+            };
+            Storyboard.SetTarget(line, SplitviewLayer);
+            Storyboard.SetTargetProperty(line, "Width");
+            Storyboard openpane = new Storyboard();
+            openpane.Children.Add(line);
+            openpane.Begin();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

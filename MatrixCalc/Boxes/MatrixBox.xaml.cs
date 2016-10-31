@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
@@ -155,20 +156,28 @@ namespace MatrixJar
                 _canJump = true;
             }
         }
-
+        
         private void TextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-
-            if (textBox.Text.Equals("-")) return; //minus is normal, don't cancel
-
+            if (textBox.Text.Equals("-")) return; //minus is okay, don't cancel
             try
             {
                 double.Parse(textBox.Text.Replace('.', ','));
                 textBox.BorderBrush = Resources["SystemControlHighlightAccentBrush"] as Brush;
+                try
+                {
+                    Matrix temp = this.InnerMatrix;
+                    GoForward.IsEnabled = true;
+                }
+                catch
+                {
+                    GoForward.IsEnabled = false;
+                }
             }
             catch
             {
+                GoForward.IsEnabled = false;
                 textBox.BorderBrush = Resources["AppBarItemDisabledForegroundThemeBrush"] as Brush;
                 if (!string.IsNullOrEmpty(textBox.Text))
                 {
@@ -290,6 +299,7 @@ namespace MatrixJar
             AppBarButton apb = (AppBarButton)sender;
             if (App._matrix != null)
             {
+                GoForward.IsEnabled = true;
                 InnerMatrix = App._matrix;
             }
             else
@@ -322,5 +332,10 @@ namespace MatrixJar
             }
         }
 
+        public Pivot _pivotToNavigate = null;
+        private void GoForward_Click(object sender, RoutedEventArgs e)
+        {
+            _pivotToNavigate.SelectedIndex += 1;
+        }
     }
 }

@@ -6,8 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    MaxHeight="500"
     x:Uid="SettingsDiag"
-    Title="О приложении"
+    Title="Настройки"
     PrimaryButtonText="Сохранить"
     SecondaryButtonText="Отмена"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
@@ -15,23 +16,27 @@
 
     <StackPanel>
         <StackPanel>
-            <TextBlock Margin="0 12 0 6" Text="MatrixJar" TextWrapping="Wrap" />
-            <TextBlock Text="Copyright © Artjom Graf 2016" />
-            <Button Name="WebSiteBtn"  Margin="0 6" Style="{StaticResource TextBlockButtonStyle}" 
-                    Padding="0" Content="worldbeater.github.io" Click="WebSiteBtn_Click" />
-            <Button Name="MailMeBtn"   Margin="0 6" Content="Сообщить о проблеме"
-                    Click="MailMeBtn_Click" x:Uid="SDMail" />
-            <Button Name="FeedbackBtn" Margin="0 6" Content="Оставить отзыв" 
-                    Click="FeedbackBtn_Click" x:Uid="SDFeedback"/>
-        </StackPanel>
-        <StackPanel>
-            <TextBlock Margin="0 24 0 0" FontWeight="Normal" FontSize="20"
-                       Text="Настройки" x:Uid="SDSettings" />
             <TextBlock Margin="0 12" x:Uid="SettingsFormat" Text="Формат вывода данных" />
             <ComboBox Name="FormatCombo" MinWidth="200" SelectedIndex="0">
                 <ComboBoxItem x:Uid="SFShort" Content="Короткий" />
                 <ComboBoxItem x:Uid="SFLong" Content="Длинный" />
             </ComboBox>
+        </StackPanel>
+        <StackPanel>
+            <RichTextBlock TextWrapping="Wrap" Margin=" 0 15 0 3" MaxWidth="200" HorizontalAlignment="Left" >
+                <RichTextBlock.Blocks>
+                    <Paragraph>
+                        <Run x:Uid="RichAbout.Text" Text="MatrixJar is an UWP matrix calculator. You can learn more about matrices here: " />
+                        <Hyperlink x:Uid="RichAboutUriText.Text" NavigateUri="https://en.wikipedia.org/wiki/Matrix_(mathematics)">
+                            <Run x:Uid="RichAboutUriUri.NavigateUri" Text="Matrix (mathematics)"/>
+                        </Hyperlink>
+                    </Paragraph>
+                </RichTextBlock.Blocks>
+            </RichTextBlock>
+            <Button Name="WebSiteBtn"  Margin="0 6" Style="{StaticResource TextBlockButtonStyle}" 
+                    Padding="0" Content="worldbeater.github.io" Click="WebSiteBtn_Click" />
+            <Button Name="FeedbackBtn" Margin="0 6" Content="Оставить отзыв" 
+                    Click="FeedbackBtn_Click" x:Uid="SDFeedback"/>
         </StackPanel>
     </StackPanel>
 </ContentDialog>

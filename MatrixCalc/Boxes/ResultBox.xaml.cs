@@ -148,5 +148,10 @@ namespace MatrixJar
             }
         }
 
+        public Pivot _pivotToNavigate = null;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _pivotToNavigate.SelectedIndex = 0;
+        }
     }
 }
