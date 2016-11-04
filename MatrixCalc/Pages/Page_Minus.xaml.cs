@@ -32,7 +32,14 @@ namespace MatrixJar
                 try
                 {
                     Result.commandBar.Visibility = Visibility.Visible;
+                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     Result.InnerMatrix = MatrixA.InnerMatrix - MatrixB.InnerMatrix;
+                }
+                catch (MatrixInputInvalidException ex)
+                {
+                    Result.commandBar.Visibility = Visibility.Collapsed;
+                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (MatrixSizeException ex)
                 {
@@ -40,11 +47,6 @@ namespace MatrixJar
                     ResourceLoader rl = new ResourceLoader();
                     Result.SizeException.Text =rl.GetString("PlusMinusErr");
                     Result.ErrorSize.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                }
-                catch (MatrixInputInvalidException ex)
-                {
-                    Result.commandBar.Visibility = Visibility.Collapsed;
-                    Result.ErrorInput.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 }
                 catch (Exception ex)
                 {

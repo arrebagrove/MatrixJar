@@ -28,7 +28,7 @@ namespace MatrixJar
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(300, 300));
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
@@ -65,6 +65,9 @@ namespace MatrixJar
                     a.Handled = true;
                 }
             };
+
+            await Task.Delay(250);
+            OpenPane();
         }
 
         private void MyButton_Click(object sender, RoutedEventArgs e)
